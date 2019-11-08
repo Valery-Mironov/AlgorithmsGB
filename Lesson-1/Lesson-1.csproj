@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3869FF9F-3039-4C7D-814F-69E9F5FC611A}</ProjectGuid>
+    <ProjectGuid>{99106914-9BAB-451B-89AC-1016417C8491}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Task_12</RootNamespace>
-    <AssemblyName>Task-12</AssemblyName>
+    <RootNamespace>Lesson_1</RootNamespace>
+    <AssemblyName>Lesson-1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,6 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleIO_Lib\ConsoleIO_Lib.csproj">
+      <Project>{e17d154c-e7fc-4d70-ab93-58970df73405}</Project>
+      <Name>ConsoleIO_Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lesson-1_Lib\Lesson-1_Lib.csproj">
+      <Project>{c6eb88e7-bb23-48b2-8d67-e2b0c9d390f7}</Project>
+      <Name>Lesson-1_Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

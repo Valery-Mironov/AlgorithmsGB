@@ -7,13 +7,16 @@
  */
 using System;
 
-namespace Task_13
+namespace Lesson_1_Lib
 {
-    class Program
+    public static class Task_13
     {
-        static void Main(string[] args)
+        public static void Run()
         {
-            Console.WriteLine("Демонстрация генератора псевдослучайных чисел\nНажмите любую клавишу...");
+            Console.WriteLine("Написать функцию, генерирующую случайное число от 1 до 100:\n" +
+                "*a) С использованием стандартной функции rand()\n" +
+                "*b) Без использования стандартной функции rand()\n");
+            Console.WriteLine("Для демонстрации генератора псевдослучайных чисел\nНажмите любую клавишу...");
             Console.ReadKey(true);
             Random rnd = new Random();
             MyRandom myRnd = new MyRandom();
@@ -26,6 +29,7 @@ namespace Task_13
                 key = Console.ReadKey(true);
             }
             while (key.Key != ConsoleKey.Escape);
+            Console.Clear();
         }
     }
 }

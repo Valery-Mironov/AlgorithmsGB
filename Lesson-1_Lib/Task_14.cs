@@ -1,10 +1,19 @@
-﻿using System;
+﻿/* Антон Алиев
+ * Алгоритмы, урок 1, задание 14*
+ * 
+ * Автоморфные числа. Натуральное число называется автоморфным, если оно равно последним цифрам своего квадрата. 
+ * Например, 25 \ :sup: '2' = 625. 
+ * Напишите программу, которая получает на вход натуральное число N 
+ * и выводит на экран все автоморфные числа, не превосходящие N.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace ConsoleApp3
+namespace Lesson_1_Lib
 {
-    class Program
+    public static class Task_14
     {
         static decimal start = 6;
         static decimal sqrStart;
@@ -14,10 +23,11 @@ namespace ConsoleApp3
         static decimal coulpe;
         static int capasityCouple;
         static SortedSet<decimal> list = new SortedSet<decimal>() { 1, 5, 6 };
-        static void Main(string[] args)
+        public static void Run()
         {
             var stopwatch = new Stopwatch();
             decimal stop = 10000000000;
+            Console.Clear();
             Console.WriteLine("Диапазон расчета автоморфных чисел от 1 до {0:### ### ### ###}", 100000000000);
             stopwatch.Start();
 
@@ -39,8 +49,8 @@ namespace ConsoleApp3
                 Console.WriteLine("{0,15:### ### ### ###}", item);
             }
             stopwatch.Stop();
-            Console.WriteLine();
-            Console.WriteLine($"Затрачено: {stopwatch.Elapsed.TotalSeconds} секунд");
+            Console.WriteLine($"\nЗатрачено: {stopwatch.Elapsed.TotalSeconds} секунд");
+            ConsoleIO_Lib.ConsolIO.PauseClear();
         }
 
         /// <summary>

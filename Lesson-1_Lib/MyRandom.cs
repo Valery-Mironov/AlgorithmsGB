@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Task_13
+namespace Lesson_1_Lib
 {
     public class MyRandom
     {
