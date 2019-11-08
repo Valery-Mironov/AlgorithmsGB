@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Task-14")]
+[assembly: AssemblyTitle("ConsoleIO_Lib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Task-14")]
+[assembly: AssemblyProduct("ConsoleIO_Lib")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("b2772e8a-25bc-4d7b-891a-8a76eb4c2e72")]
+[assembly: Guid("e17d154c-e7fc-4d70-ab93-58970df73405")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
