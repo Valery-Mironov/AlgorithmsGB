@@ -54,6 +54,10 @@
       <Project>{e17d154c-e7fc-4d70-ab93-58970df73405}</Project>
       <Name>ConsoleIO_Lib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Lesson-2_Lib\Lesson-2_Lib.csproj">
+      <Project>{ee55f558-59a3-4c51-9337-6f0569bd58b8}</Project>
+      <Name>Lesson-2_Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,9 +14,9 @@ namespace MainMenu
             Console.WriteLine("Антон Алиев\tДомашнее задание к уроку 2\tКурс Алгоритмы GB\n");
             do
             {
-                for (int i = 9; i <= 14; i++)
+                for (int i = 1; i <= 3; i++)
                 {
-                    Console.WriteLine($"Для демонстрации задачи №{i:D2} ввдете {i:D2} и нажмите \"Enter\"");
+                    Console.WriteLine($"Для демонстрации задачи №{i} ввдете {i} и нажмите \"Enter\"");
                 }
                 Console.WriteLine("\nДля выхода введите 0");
                 numb = ConsoleIO_Lib.ConsolIO.GetNumber("номер задачи:");
@@ -29,7 +29,7 @@ namespace MainMenu
                         //Lesson_1_Lib.Task_10.Run();
                         break;
                     case 3:
-                        //Lesson_1_Lib.Task_11.Run();
+                        Lesson_2_Lib.Task3.Run();
                         break;
                     case 4:
                         //Lesson_1_Lib.Task_12.Run();

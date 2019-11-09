@@ -16,7 +16,7 @@ namespace ConsoleIO_Lib
             bool isCorrect = false;
             do
             {
-                Console.WriteLine($"Введите {msg1} {msg2}");
+                Console.WriteLine(msg1, msg2);
                 str = Console.ReadLine();
                 isCorrect = int.TryParse(str, out result);
                 if (!isCorrect)
