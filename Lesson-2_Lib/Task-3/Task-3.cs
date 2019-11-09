@@ -12,6 +12,7 @@
 
 using Lesson_2_Lib.Task_3;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -21,64 +22,80 @@ using static ConsoleIO_Lib.ConsolIO;
 
 namespace Lesson_2_Lib
 {
-    public class Task3
-    {
-        public static void Run()
-        {
-			ConsoleKeyInfo key;
+	public class Task3
+	{
+		public static void Run()
+		{
 			bool exitFlag = false;
-            Console.WriteLine("Исполнитель «Калькулятор» преобразует целое число, записанное на экране. У исполнителя две команды, каждой присвоен номер:\n" +
-                "* 1.Прибавь 1\n* 2.Умножь на 2\n* Первая команда увеличивает число на экране на 1,\nвторая увеличивает его в 2 раза.\n" +
-                "* Определить, сколько существует программ, которые преобразуют число 3 в число 20:\n" +
-                "*а.С использованием массива\n* b. * С использованием рекурсии.");
-
-			Calculator calc = new Calculator(3, 20);
-
+			int select;
 			do
 			{
-				calc.Reset();
 				Console.Clear();
-				Console.WriteLine("\"Spase\"\t- увеличить число на единицу\n\"Enter\"\t- удвоить число\n\"N\"\t- начать заново\n\"Esc\"\t- выйти\n");
-				Console.WriteLine("Текущее число: ");
+				Console.WriteLine("Исполнитель «Калькулятор» преобразует целое число, записанное на экране." +
+					"\nУ исполнителя две команды, каждой присвоен номер:\n" +
+					"1.Прибавь 1\n2.Умножь на 2\nПервая команда увеличивает число на экране на 1,\n" +
+					"вторая увеличивает его в 2 раза.\n" +
+					"Определить, сколько существует программ, которые преобразуют число 3 в число 20:\n" +
+					"а) С использованием массива\nb) С использованием рекурсии *");
+				
+				Console.WriteLine("\nВыберите дальнейшее действие:\n0 - Выйти\n1 - Сыграть в игру\n2 - Выполнить задание");
+				select = GetNumber();
 
-				while (calc.CheckState() < 0 && !exitFlag)
+				switch(select)
 				{
-					Console.SetCursorPosition(15, 5);
-					Console.WriteLine($"{ calc.CurrState,-10}");
-					key = Console.ReadKey(true);
-
-					switch (key.Key)
-					{
-						case ConsoleKey.Spacebar:
-							calc.StepAdd();
-							break;
-						case ConsoleKey.Enter:
-							calc.StepRedouble();
-							break;
-						case ConsoleKey.N:
-							calc.Reset();
-							break;
-						case ConsoleKey.Escape:
-							exitFlag = true;
-							break;
-						default: continue;
-					}
-					if (calc.CheckState() == 0)
-					{
-						Console.WriteLine($"Вы выиграли!\nКоличество ходов {calc.Steps}");
+					case 0:
+						exitFlag = true;
+						Console.Clear();
+						break;
+					case 1: 
+						ConsoleGame game = new ConsoleGame(); 
+						game.StartGame();
+						break;
+					case 2:
+						CalculateTask3();
+						break;
+					default: 
+						Console.WriteLine($"В текущем меню нет пункта {select}\nДля повтора нажмите любую клавишу...");
 						Console.ReadKey();
 						break;
-					}
-					else if (calc.CheckState() > 0)
-					{
-						Console.WriteLine($"Число {calc.CurrState} превысило {calc.Finish}\nВы проиграли!");
-						Console.ReadKey();
-						break;
-					}
-				} 
-			} while (!exitFlag);
+				}
+			}
+			while (!exitFlag);
+		}
 
-			PauseClear();
-        }
-    }
+		static void CalculateTask3()
+		{
+			Calculator calc = new Calculator(3, 20);
+			int arreyMethod = 0;
+			int recursMethod = 0;
+			int cur = calc.Start;
+			RecursCalc(cur);
+			Console.WriteLine($"Найдено {recursMethod} возможных вариантов решения");
+			Console.ReadKey();
+
+			void RecursCalc(int temp)
+			{
+				if (temp == calc.Finish)
+				{
+					recursMethod++;
+					return;
+				}
+				else if (temp > calc.Finish)
+					return;
+				else
+				{
+					if (temp * 2 <= calc.Finish) RecursCalc(temp * 2);
+					RecursCalc(temp + 1);
+					return;
+				}
+			}
+			
+			void ArrayCalclulate()
+			{
+				while()
+			}
+		}
+
+		
+	}
 }

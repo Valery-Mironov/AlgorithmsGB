@@ -29,6 +29,11 @@ namespace Lesson_2_Lib.Task_3
         public int Steps { get; private set; }
 
 		/// <summary>
+		/// Минимальное количество шагов
+		/// </summary>
+		public int MinMoves { get; private set; }
+
+		/// <summary>
 		/// Параметризированный конструктор
 		/// </summary>
 		/// <param name="start">стартовое число</param>
@@ -53,31 +58,34 @@ namespace Lesson_2_Lib.Task_3
 			Steps = 0;
 			Start = start;
 			Finish = finish;
-			CurrState = 0;
+			CurrState = start;
+			MinMoves = MinMovesCalculate();
 		}
 
 		/// <summary>
 		/// Инкрементирует текущее число
 		/// </summary>
-		public void StepAdd()
+		internal void StepAdd()
         {
             CurrState++;
 			Steps++;
+			CheckState();
 		}
 
 		/// <summary>
 		/// Удваивает текущее число
 		/// </summary>
-		public void StepRedouble()
+		internal void StepRedouble()
 		{
 			CurrState *= 2;
 			Steps++;
+			CheckState();
 		}
 
 		/// <summary>
 		/// Сбрасывает состояние
 		/// </summary>
-		public void Reset()
+		internal void Reset()
 		{
 			Init(Start, Finish);
 		}
@@ -86,11 +94,34 @@ namespace Lesson_2_Lib.Task_3
 		/// Возвращает признак состояния игры
 		/// </summary>
 		/// <returns></returns>
-		public int CheckState()
+		internal int CheckState()
 		{
 			if (CurrState == Finish) return 0;
-			else if (CurrState > Finish) return 1;
+			else if (CurrState > Finish || Steps > MinMoves) return 1;
 			return -1;
+		}
+
+		/// <summary>
+		/// Расчитывает варианты количества ходов
+		/// </summary>
+		private int MinMovesCalculate()
+		{
+			int temp = Finish;
+			int stp = 0;
+			while(temp > Start)
+			{
+				if(temp % 2 == 0)
+				{
+					temp /= 2;
+					stp++;
+				}
+				else
+				{
+					temp--;
+					stp++;
+				}
+			}
+			return stp;
 		}
 	}
 }
