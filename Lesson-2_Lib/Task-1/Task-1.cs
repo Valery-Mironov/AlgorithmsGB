@@ -24,7 +24,7 @@ namespace Lesson_2_Lib
 				bool[] binInt = MyConvert.IntToBin(decInt);
 
 				PrintResult(decInt, binInt);
-				Console.WriteLine("Для повтора нажмите любую клавишу...\nДля выхода нажмите \"Esc\"");
+				Console.WriteLine("\nДля повтора нажмите любую клавишу...\nДля выхода нажмите \"Esc\"");
 				key = Console.ReadKey(true);
 			}
 			while (key.Key != ConsoleKey.Escape);
@@ -38,7 +38,7 @@ namespace Lesson_2_Lib
 		static void PrintResult(int dec, bool[] bin)
 		{
 			bool flag = false;
-			Console.Write($"{dec}(Dec) = ");
+			Console.Write($"{dec} (Dec) = ");
 			for (int i = 0; i < bin.Length / 4; i++)
 			{
 				for (int j = 0; j < 4; j++)

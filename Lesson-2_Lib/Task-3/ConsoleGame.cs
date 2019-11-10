@@ -21,12 +21,12 @@ namespace Lesson_2_Lib.Task_3
 				Console.Clear();
 				Console.WriteLine("\"Spase\"\t- увеличить число на единицу\n\"Enter\"\t- удвоить число\n\"N\"\t- начать заново\n\"Esc\"\t- выйти\n");
 				Console.SetCursorPosition(40, 0);
-				Console.WriteLine($"минимальное количество ходов {this.MinMoves}");
+				//Console.WriteLine($"Для выигрыша необходимо набрать {this.Finish} за {this.MinMoves} ходов!");
 
 				while (this.CheckState() < 0 && !exitFlag)
 				{
 					Console.SetCursorPosition(0, 5);
-					Console.WriteLine($"Необходимe число:\t{this.Finish}\nТекущее число:\t\t{this.CurrState}");
+					Console.WriteLine($"Необходимe число:\t{this.Finish}\nТекущее число:\t\t{this.CurrState}\nОсталось ходов: {this.MinMoves - this.Steps}");
 					key = Console.ReadKey(true);
 
 					switch (key.Key)
@@ -47,6 +47,7 @@ namespace Lesson_2_Lib.Task_3
 					}
 					if (this.CheckState() == 0)
 					{
+						Console.Clear();
 						Console.WriteLine($"Вы выиграли!\nКоличество ходов {this.Steps}");
 						Console.ReadKey();
 						break;

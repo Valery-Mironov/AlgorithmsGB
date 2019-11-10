@@ -10,7 +10,7 @@ namespace MainMenu
     {
         static void Main(string[] args)
         {
-            int numb;
+			int numb;
             do
             {
 				Console.Clear();
@@ -20,8 +20,9 @@ namespace MainMenu
                     Console.WriteLine($"Для демонстрации задачи №{i} ввдете {i} и нажмите \"Enter\"");
                 }
                 Console.WriteLine("\nДля выхода введите 0");
+				
                 numb = ConsoleIO_Lib.ConsolIO.GetNumber("номер задачи:");
-                switch (numb)
+				switch (numb)
                 {
                     case 1:
                         Lesson_2_Lib.Task1.Run();
@@ -35,7 +36,7 @@ namespace MainMenu
                     default: { Console.WriteLine($"В решении нет задачи с номером {numb}"); continue; }
                 }
             }
-            while (numb != 0);
+            while (numb !=0);
         }
     }
 }
