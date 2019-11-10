@@ -60,11 +60,13 @@ namespace Lesson_2_Lib
 		static void CalculateTask3()
 		{
 			Calculator calc = new Calculator(3, 20);
-			int arreyMethod = 0;
+			int arrayMethod = 0;
 			int recursMethod = 0;
 			//int cur = calc.Start;
 			RecursCalc(calc.Start);
-			Console.WriteLine($"Найдено {recursMethod} возможных вариантов решения");
+			ArrayCalc(calc.Start);
+			Console.WriteLine($"\nНайдено {recursMethod} возможных вариантов решения рекурсивным методом");
+			Console.WriteLine($"Найдено {arrayMethod} взможных вариантов с использованием массива");
 			Console.ReadKey();
 
 			void RecursCalc(int temp)
@@ -84,7 +86,7 @@ namespace Lesson_2_Lib
 				}
 			}
 			
-			void ArrayCalclulate(int start, int finish)
+			void ArrayCalc(int start)
 			{
 				
 			}
