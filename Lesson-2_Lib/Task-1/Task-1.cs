@@ -20,7 +20,7 @@ namespace Lesson_2_Lib
 				Console.Clear();
 
 				Console.WriteLine("Задание 1\nРеализовать функцию перевода чисел из десятичной системы в двоичную, используя рекурсию.");
-				int decInt = GetNumber("Введите целое число в десятичной системе: ");
+				int decInt = GetNumber($"Введите целое число в десятичной системе: от {int.MinValue} до {int.MaxValue}");
 				bool[] binInt = MyConvert.IntToBin(decInt);
 
 				PrintResult(decInt, binInt);
@@ -57,7 +57,7 @@ namespace Lesson_2_Lib
 					Console.Write(" ");
 				}
 			}
-
+			if (!flag) Console.Write(0);
 			Console.Write("(Bin)");
 		}
     }
