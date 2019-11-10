@@ -8,38 +8,31 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static ConsoleIO_Lib.ConsolIO;
 
 namespace Lesson_2_Lib
 {
-    public class Task2
+	public class Task2
     {
         public static void Run()
         {
             Console.WriteLine("Задание 2\nРеализовать функцию возведения числа a в степень b:\n" +
-                "a) Без рекурсии\nb)Рекурсивно\nc)* Рекурсивно, используя свойство чётности степени");
-
-			//double result;
+                "1) Без рекурсии\n2)Рекурсивно\n3)* Рекурсивно, используя свойство чётности степени");
+			
 			double number = GetNumber("Введите основание степени:");
 			int power = GetNumber("Введите показатель степени:");
-			Console.WriteLine($"Без рекурсии: {number}^{power}={Pow(number,power)}");
-			Console.WriteLine($"С рекурсией: {number}^{power}={RecPow(number, power)}");
+			Console.WriteLine($"Без рекурсии:\t\t{number,8}^{power}={Pow(number,power)}");
+			Console.WriteLine($"С рекурсией:\t\t{number,8}^{power}={RecPow(number, power)}");
+			Console.WriteLine($"С чет.рекурсией:\t{number,8}^{power}={RecPowPary(number, power)}");
 			Console.ReadKey();
-
-			
-			
 
 		}
 
 		/// <summary>
 		/// Возведение числа в степень через цикл
 		/// </summary>
-		/// <param name="numb">число</param>
-		/// <param name="pow">степень числа</param>
+		/// <param name="numb">основание степени</param>
+		/// <param name="pow">показатель степени</param>
 		/// <returns>numb^pow</returns>
 		static double Pow(double numb, int pow)
 		{
@@ -70,17 +63,31 @@ namespace Lesson_2_Lib
 		/// <summary>
 		/// Рекурсивный метод возведения в степень
 		/// </summary>
-		/// <param name="numb">число</param>
-		/// <param name="pow">степень числа</param>
+		/// <param name="numb">основание степени</param>
+		/// <param name="pow">показатель степени</param>
 		/// <returns>numb^pow</returns>
 		static double RecPow(double numb, int pow)
 		{
-			int absPow = Math.Abs(pow);
 			if (numb == 0) return 0;
 			if (numb == 1 || pow == 0) return 1;
-			if (pow > 1) return RecPow(numb , --absPow) * numb;
-			if (pow < -1) return 1/ (RecPow(numb, --absPow) * numb);
+			if (pow > 0) return RecPow(numb , --pow) * numb;
+			if (pow < 0) return 1/ (RecPow(numb, Math.Abs(++pow)) * numb);
 			return numb;
+		}
+
+		/// <summary>
+		/// Рекурсивное возведение в степень с учетом четности
+		/// </summary>
+		/// <param name="numb">основание степени</param>
+		/// <param name="pow">показатель степени</param>
+		/// <returns>numb^pow</returns>
+		static double RecPowPary(double numb, int pow)
+		{
+			if (numb == 0) return 0;
+			if (numb == 1 || pow == 0) return 1;
+			if (pow == -1) return 1 / numb;
+			if (pow > 2 && pow % 2 == 0) return RecPowPary(RecPowPary(numb, pow / 2), 2);
+			return RecPowPary(numb, pow / 2) * RecPow(numb, pow - pow / 2);
 		}
 	}
 }
