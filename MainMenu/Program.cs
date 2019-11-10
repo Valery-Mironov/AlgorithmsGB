@@ -26,7 +26,7 @@ namespace MainMenu
                         //Lesson_1_Lib.Task_9.Run();
                         break;
                     case 2:
-                        //Lesson_1_Lib.Task_10.Run();
+                        Lesson_2_Lib.Task2.Run();
                         break;
                     case 3:
                         Lesson_2_Lib.Task3.Run();

@@ -68,8 +68,8 @@ namespace Lesson_2_Lib
 			Calculator calc = new Calculator(3, 20);
 			int arreyMethod = 0;
 			int recursMethod = 0;
-			int cur = calc.Start;
-			RecursCalc(cur);
+			//int cur = calc.Start;
+			RecursCalc(calc.Start);
 			Console.WriteLine($"Найдено {recursMethod} возможных вариантов решения");
 			Console.ReadKey();
 
@@ -80,7 +80,7 @@ namespace Lesson_2_Lib
 					recursMethod++;
 					return;
 				}
-				else if (temp > calc.Finish)
+				if (temp > calc.Finish)
 					return;
 				else
 				{
@@ -90,9 +90,9 @@ namespace Lesson_2_Lib
 				}
 			}
 			
-			void ArrayCalclulate()
+			void ArrayCalclulate(int start, int finish)
 			{
-				while()
+				
 			}
 		}
 
