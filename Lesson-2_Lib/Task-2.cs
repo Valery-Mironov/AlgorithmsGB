@@ -38,24 +38,22 @@ namespace Lesson_2_Lib
 		{
 			double result = numb;
 			if (numb == 0) return 0;
-			else if (numb == 1 || pow == 0) return 1;
-
-			if (pow > 0)
+			if (numb == 1 || pow == 0) return 1;
+			if (pow == 1) return numb;
+			if(pow < 0)
 			{
+				pow = Math.Abs(pow);
 				while (pow > 1)
 				{
 					result *= numb;
 					pow--;
 				}
-			}
-			else
-			{
-				while (pow < -1)
-				{
-					result *= numb;
-					pow++;
-				}
 				return 1 / result;
+			}
+			while(pow > 1)
+			{
+				result *= numb;
+				pow--;
 			}
 			return result;
 		}
@@ -70,9 +68,8 @@ namespace Lesson_2_Lib
 		{
 			if (numb == 0) return 0;
 			if (numb == 1 || pow == 0) return 1;
-			if (pow > 0) return RecPow(numb , --pow) * numb;
-			if (pow < 0) return 1/ (RecPow(numb, Math.Abs(++pow)) * numb);
-			return numb;
+			if (pow < 0) return 1/ RecPow(numb, Math.Abs(pow));
+			else return RecPow(numb, --pow) * numb;
 		}
 
 		/// <summary>

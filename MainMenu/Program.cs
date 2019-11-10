@@ -23,22 +23,13 @@ namespace MainMenu
                 switch (numb)
                 {
                     case 1:
-                        //Lesson_1_Lib.Task_9.Run();
+                        Lesson_2_Lib.Task1.Run();
                         break;
                     case 2:
                         Lesson_2_Lib.Task2.Run();
                         break;
                     case 3:
                         Lesson_2_Lib.Task3.Run();
-                        break;
-                    case 4:
-                        //Lesson_1_Lib.Task_12.Run();
-                        break;
-                    case 5:
-                        //Lesson_1_Lib.Task_13.Run();
-                        break;
-                    case 6:
-                        //Lesson_1_Lib.Task_14.Run();
                         break;
                     default: { Console.WriteLine($"В решении нет задачи с номером {numb}"); continue; }
                 }
