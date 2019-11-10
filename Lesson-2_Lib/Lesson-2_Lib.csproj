@@ -41,9 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Task-1.cs" />
+    <Compile Include="Task-1\Task-1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Task-2.cs" />
+    <Compile Include="Task-1\MyConvert.cs" />
+    <Compile Include="Task-2\Task-2.cs" />
     <Compile Include="Task-3\Calculator.cs" />
     <Compile Include="Task-3\ConsoleGame.cs" />
     <Compile Include="Task-3\Task-3.cs" />

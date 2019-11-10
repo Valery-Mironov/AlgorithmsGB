@@ -12,12 +12,6 @@
 
 using Lesson_2_Lib.Task_3;
 using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using static ConsoleIO_Lib.ConsolIO;
 
 namespace Lesson_2_Lib

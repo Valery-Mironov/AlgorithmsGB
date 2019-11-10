@@ -11,10 +11,11 @@ namespace MainMenu
         static void Main(string[] args)
         {
             int numb;
-            Console.WriteLine("Антон Алиев\tДомашнее задание к уроку 2\tКурс Алгоритмы GB\n");
             do
             {
-                for (int i = 1; i <= 3; i++)
+				Console.Clear();
+				Console.WriteLine("Антон Алиев\tДомашнее задание к уроку 2\tКурс Алгоритмы GB\n");
+				for (int i = 1; i <= 3; i++)
                 {
                     Console.WriteLine($"Для демонстрации задачи №{i} ввдете {i} и нажмите \"Enter\"");
                 }
