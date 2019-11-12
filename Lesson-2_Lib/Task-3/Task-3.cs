@@ -42,7 +42,7 @@ namespace Lesson_2_Lib
 						Console.Clear();
 						break;
 					case 1: 
-						ConsoleGame game = new ConsoleGame(); 
+						ConsoleGame game = new ConsoleGame(GetNumber("Введите начальное число: "), GetNumber("Введите конечное число: ")); 
 						game.StartGame();
 						break;
 					case 2:
@@ -60,13 +60,11 @@ namespace Lesson_2_Lib
 		static void CalculateTask3()
 		{
 			Calculator calc = new Calculator(3, 20);
-			int arrayMethod = 0;
 			int recursMethod = 0;
-			//int cur = calc.Start;
 			RecursCalc(calc.Start);
-			ArrayCalc(calc.Start);
+			
 			Console.WriteLine($"\nНайдено {recursMethod} возможных вариантов решения рекурсивным методом");
-			Console.WriteLine($"Найдено {arrayMethod} взможных вариантов с использованием массива");
+			Console.WriteLine($"Найдено {"(в разработке)"} взможных вариантов с использованием массива");
 			Console.ReadKey();
 
 			void RecursCalc(int temp)
@@ -85,13 +83,6 @@ namespace Lesson_2_Lib
 					return;
 				}
 			}
-			
-			void ArrayCalc(int start)
-			{
-				
-			}
 		}
-
-		
 	}
 }

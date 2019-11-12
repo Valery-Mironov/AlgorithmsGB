@@ -1,8 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/* Антон Алиев
+ * Алгоритмы,  урок 3, задание 3**
+ * 
+ * Исполнитель «Калькулятор» преобразует целое число, записанное на экране. У исполнителя две команды, каждой присвоен номер:
+ *    1. Прибавь 1.
+ *    2. Умножь на 2.
+ * Первая команда увеличивает число на экране на 1, вторая увеличивает его в 2 раза.
+ * Определить, сколько существует программ, которые преобразуют число 3 в число 20:
+ *    а. С использованием массива.
+ *    b. *С использованием рекурсии.
+ */
+
+using System;
 
 namespace Lesson_2_Lib.Task_3
 {
@@ -21,7 +29,6 @@ namespace Lesson_2_Lib.Task_3
 				Console.Clear();
 				Console.WriteLine("\"Spase\"\t- увеличить число на единицу\n\"Enter\"\t- удвоить число\n\"N\"\t- начать заново\n\"Esc\"\t- выйти\n");
 				Console.SetCursorPosition(40, 0);
-				//Console.WriteLine($"Для выигрыша необходимо набрать {this.Finish} за {this.MinMoves} ходов!");
 
 				while (this.CheckState() < 0 && !exitFlag)
 				{
@@ -54,7 +61,9 @@ namespace Lesson_2_Lib.Task_3
 					}
 					else if (this.CheckState() > 0)
 					{
+						if(this.CurrState > this.Finish)
 						Console.WriteLine($"Число {this.CurrState} превысило {this.Finish}\nВы проиграли!");
+						else Console.WriteLine("Превышено количество ходов...\nВы проиграли!");
 						Console.ReadKey();
 						break;
 					}
