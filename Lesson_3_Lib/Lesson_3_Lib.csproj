@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{11CC2A5F-5656-4DC7-8CCE-BA60CE46E653}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>MainMenu</RootNamespace>
-    <AssemblyName>MainMenu</AssemblyName>
+    <ProjectGuid>{AC7E313C-21AF-4F87-A244-F33778CF0A52}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lesson_3_Lib</RootNamespace>
+    <AssemblyName>Lesson_3_Lib</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,21 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Task1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ConsoleIO_Lib\ConsoleIO_Lib.csproj">
-      <Project>{e17d154c-e7fc-4d70-ab93-58970df73405}</Project>
-      <Name>ConsoleIO_Lib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Lesson_3_Lib\Lesson_3_Lib.csproj">
-      <Project>{ac7e313c-21af-4f87-a244-f33778cf0a52}</Project>
-      <Name>Lesson_3_Lib</Name>
-    </ProjectReference>
+    <Compile Include="Task2.cs" />
+    <Compile Include="Task3.cs" />
+    <Compile Include="Task4.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
