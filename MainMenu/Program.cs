@@ -38,14 +38,14 @@ namespace MainMenu
 				switch (numb)
                 {
                     case 1:
-                        Task1_2.Task1();
+                        Tasks.Task1();
                         break;
                     case 2:
-                        Task1_2.Task2();
+                        Tasks.Task2();
                         break;
-                    //case 3:
-                    //    Task3.Run();
-                    //    break;
+                    case 3:
+                        Tasks.Task3();
+                        break;
                     //case 4:
                     //    Lesson_3_Lib.ArreyClass.Run();
                     //    break;

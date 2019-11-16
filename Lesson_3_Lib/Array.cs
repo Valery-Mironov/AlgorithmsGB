@@ -7,7 +7,7 @@ using System;
 
 namespace Lesson_3_Lib
 {
-    public static class ArraySort
+    public static class Array
     {
         /// <summary>
         /// Возвращает отсортированный методом пузырька исходный массив
@@ -70,7 +70,7 @@ namespace Lesson_3_Lib
         /// </summary>
         /// <param name="length">длина массива</param>
         /// <returns></returns>
-        public static int[] RandomArray(int length, int min =0, int max = 51)
+        public static int[] RandomArray(int length, int min =0, int max = 11)
         {
             Random rnd = new Random();
             int[] arr = new int[length];
@@ -121,6 +121,45 @@ namespace Lesson_3_Lib
                 left++;
             }
             return arr;
+        }
+
+        /// <summary>
+        /// Возвращает индекс искомого числа в массиве, или -1 при его отсутствии
+        /// </summary>
+        /// <param name="arr">отсортированный массив</param>
+        /// <returns></returns>
+        public static int FindIndex(int[] arr, int find)
+        {
+            int minIndex = 0;
+            int maxIndex = arr.Length;
+            int findIndex = -1;
+            Find(minIndex, maxIndex);
+
+            void Find(int min, int max)
+            {
+                int index = min + (max - min)/2;
+                if (index == max || index == min)
+                {
+                    return;
+                }
+                else if (arr[index] == find)
+                {
+                    findIndex = index;
+                    return;
+                }
+                else if (arr[index] < find)
+                {
+                    minIndex = index;
+                    Find(minIndex, maxIndex);
+                }
+                else if (arr[index] > find)
+                {
+                    maxIndex = index;
+                    Find(minIndex, maxIndex);
+                }
+            }
+
+            return findIndex;
         }
     }
 }
