@@ -65,6 +65,7 @@ namespace Lesson_3_Lib
 
             while (right - left >= 0)
             {
+                operations++;
                 for (int i = left+1; i < right; i++)
                 {
                     if (arr[left] > arr[i])
@@ -78,11 +79,13 @@ namespace Lesson_3_Lib
                 right--;
                 for (int j = right; j > left; j--)
                 {
+                    operations++;
                     if (arr[right] < arr[j])
                     {
                         temp = arr[j];
                         arr[j] = arr[right];
                         arr[right] = temp;
+                        operations++;
                     }
                 }
                 left++;

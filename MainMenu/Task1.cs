@@ -16,7 +16,7 @@ namespace Lesson_3_Lib
             "Сравнить количество операций сравнения оптимизированной и неоптимизированной программы.\n" +
             "Написать функции сортировки, которые возвращают количество операций.";
 
-        static int testArrLength = 100;
+        static int testArrLength = 1000;
 
         public static void Run()
         {

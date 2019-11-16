@@ -43,9 +43,9 @@ namespace MainMenu
                     case 2:
                         Task2.Run();
                         break;
-                    case 3:
-                        Task3.Run();
-                        break;
+                    //case 3:
+                    //    Task3.Run();
+                    //    break;
                     //case 4:
                     //    Lesson_3_Lib.ArreyClass.Run();
                     //    break;
