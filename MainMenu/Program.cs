@@ -3,15 +3,18 @@
  * Основное консольное меню
  */
 
+using Lesson_3_Lib;
 using System;
 
 namespace MainMenu
 {
-    class Program
+    public static class Program
     {
+        //public static TestArray testArray;
         static void Main(string[] args)
         {
-			int numb;
+            //testArray = new TestArray();
+            int numb;
             do
             {
 				string[] tasks = new string[] 
@@ -21,7 +24,7 @@ namespace MainMenu
                     "2. *Реализовать шейкерную сортировку.",
                     "3. Реализовать бинарный алгоритм поиска в виде функции, которой передаётся отсортированный массив. " +
                         "Функция возвращает индекс найденного элемента или –1, если элемент не найден.",
-                    "4. *Подсчитать количество операций для каждой из сортировок и сравнить его с асимптотической сложностью алгоритма."
+                    "4. Сгенерировать новый массив"
                 };
 				
 				Console.Clear();
@@ -35,17 +38,17 @@ namespace MainMenu
 				switch (numb)
                 {
                     case 1:
-                        Lesson_3_Lib.Task1.Run();
+                        Task1.Run();
                         break;
                     case 2:
-                        Lesson_3_Lib.Task2.Run();
+                        Task2.Run();
                         break;
                     case 3:
-                        Lesson_3_Lib.Task3.Run();
+                        Task3.Run();
                         break;
-                    case 4:
-                        Lesson_3_Lib.Task4.Run();
-                        break;
+                    //case 4:
+                    //    Lesson_3_Lib.ArreyClass.Run();
+                    //    break;
                     default: { Console.WriteLine($"В решении нет задачи с номером {numb}"); continue; }
                 }
             }
