@@ -1,9 +1,6 @@
 ﻿/* Антон Алиев
  * Алгоритмы, домашнее задание к уроку 3. 
  * 
- * Задание 1
- * Попробовать оптимизировать пузырьковую сортировку. Сравнить количество операций сравнения оптимизированной и неоптимизированной программы. 
- * Написать функции сортировки, которые возвращают количество операций.
  */
 
 using System;
@@ -13,24 +10,42 @@ namespace Lesson_3_Lib
     public static class ArraySort
     {
         /// <summary>
-        /// Количество условных операций сортировки пузырьком
-        /// </summary>
-        public static int bubbleOperat;
-
-        /// <summary>
-        /// Количество условных операций сортировки улучшенным пузырьком
-        /// </summary>
-        public static int optBubbleOperat;
-        
-        /// <summary>
         /// Возвращает отсортированный методом пузырька исходный массив
         /// </summary>
         /// <param name="arr">исходный массив</param>
+        /// <param name="operations">количество затраченных на сортировку условных операций</param>
         /// <returns></returns>
-        public static int BubbleSort(int[] arr)
+        public static int[] BubbleSort(int[] arr, out int operations)
         {
             int temp;
-            int operations;
+            operations = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                operations++;
+                for (int j = 0; j < arr.Length - 1 - i; j++)
+                {
+                    operations++;
+                    if (arr[j] > arr[j + 1])
+                    {
+                        temp = arr[j+1];
+                        arr[j+1] = arr[j];
+                        arr[j] = temp;
+                        operations++;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        /// <summary>
+        /// Возвращает отсортированный методом улучшенного пузырька исходный массив
+        /// </summary>
+        /// <param name="arr">исходный массив</param>
+        /// <param name="operations">количество затраченных на сортировку условных операций</param>
+        /// <returns></returns>
+        public static int[] OptimizedBubbleSort(int[] arr, out int operations)
+        {
+            int temp;
             operations = 0;
             for (int i = 0; i < arr.Length; i++)
             {
@@ -47,18 +62,33 @@ namespace Lesson_3_Lib
                     }
                 }
             }
-                return operations;
+            return arr;
         }
 
         /// <summary>
-        /// Возвращает отсортированный оптимизированным методом пузырька исходный массив
+        /// Возвращает массив случайных целых чисел
         /// </summary>
-        /// <param name="arr">исходный массив</param>
+        /// <param name="length">длина массива</param>
         /// <returns></returns>
-        public static int OptimizedBubbleSort(int[] arr)
+        public static int[] RandomArray(int length, int min =0, int max = 51)
+        {
+            Random rnd = new Random();
+            int[] arr = new int[length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = rnd.Next(min, max);
+            }
+            return arr;
+        }
+
+        /// <summary>
+        /// Возвращает отсортированный шейкерным методом исходный массив
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public static int[] ShakerSort(int[] arr, out int operations)
         {
             int temp;
-            int operations;
             operations = 0;
             int left = 0;
             int right = arr.Length;
@@ -90,33 +120,7 @@ namespace Lesson_3_Lib
                 }
                 left++;
             }
-            return operations;
-        }
-
-        /// <summary>
-        /// Возвращает массив случайных целых чисел
-        /// </summary>
-        /// <param name="length">длина массива</param>
-        /// <returns></returns>
-        public static int[] RandomArray(int length)
-        {
-            Random rnd = new Random();
-            int[] arr = new int[length];
-            for (int i = 0; i < arr.Length; i++)
-            {
-                arr[i] = rnd.Next();
-            }
             return arr;
-        }
-
-        /// <summary>
-        /// Сортирует массив случайных целых чисел двумя способами
-        /// </summary>
-        public static void TestSort(int length)
-        {
-            int[] array = RandomArray(length);
-            bubbleOperat = BubbleSort((int[])array.Clone());
-            optBubbleOperat = OptimizedBubbleSort((int[])array.Clone());
         }
     }
 }

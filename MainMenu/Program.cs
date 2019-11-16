@@ -38,10 +38,10 @@ namespace MainMenu
 				switch (numb)
                 {
                     case 1:
-                        Task1.Run();
+                        Task1_2.Task1();
                         break;
                     case 2:
-                        Task2.Run();
+                        Task1_2.Task2();
                         break;
                     //case 3:
                     //    Task3.Run();

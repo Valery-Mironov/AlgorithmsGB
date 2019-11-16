@@ -5,6 +5,7 @@
  * Реализовать шейкерную сортировку
  */
 
+using Lesson_3_Lib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace MainMenu
             Console.WriteLine(msg);
             Console.WriteLine("нажмите любую клавишу...");
             Console.ReadKey(true);
+
+            //ArraySort.ShakerSort
 
             
             ConsoleIO_Lib.ConsolIO.PauseClear();
