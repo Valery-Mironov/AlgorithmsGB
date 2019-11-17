@@ -1,7 +1,13 @@
 ﻿using System;
 
+/// <summary>
+/// Бибилиотека для удобства работы с консолью
+/// </summary>
 namespace ConsoleIO_Lib
 {
+    /// <summary>
+    /// Методы для работы с консолью
+    /// </summary>
     public static class ConsolIO
     {
         /// <summary>
@@ -36,6 +42,16 @@ namespace ConsoleIO_Lib
             Console.WriteLine("Нажмите любую клавишу...");
             Console.ReadKey();
             Console.Clear();
+        }
+
+        /// <summary>
+        /// Чистит консоль и выводит условие задачи
+        /// </summary>
+        /// <param name="msg"></param>
+        public static void Greeting(string msg)
+        {
+            Console.Clear();
+            Console.WriteLine(msg);
         }
     }
 }

@@ -7,34 +7,43 @@ using System;
 
 namespace Lesson_3_Lib
 {
-    public static class Array
+    /// <summary>
+    /// Класс с методами сортировки целочисленных массивов
+    /// </summary>
+    public class ArrayTest
     {
+        /// <summary>
+        /// Массив целых чисел
+        /// </summary>
+        public int[] arr;
+
         /// <summary>
         /// Возвращает отсортированный методом пузырька исходный массив
         /// </summary>
         /// <param name="arr">исходный массив</param>
         /// <param name="operations">количество затраченных на сортировку условных операций</param>
         /// <returns></returns>
-        public static int[] BubbleSort(int[] arr, out int operations)
+        public int[] BubbleSort(int[] arr, out int operations)
         {
             int temp;
+            int[] array = (int[])arr.Clone();
             operations = 0;
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 operations++;
-                for (int j = 0; j < arr.Length - 1 - i; j++)
+                for (int j = 0; j < array.Length - 1 - i; j++)
                 {
                     operations++;
-                    if (arr[j] > arr[j + 1])
+                    if (array[j] > array[j + 1])
                     {
-                        temp = arr[j+1];
-                        arr[j+1] = arr[j];
-                        arr[j] = temp;
+                        temp = array[j+1];
+                        array[j+1] = array[j];
+                        array[j] = temp;
                         operations++;
                     }
                 }
             }
-            return arr;
+            return array;
         }
 
         /// <summary>
@@ -43,26 +52,71 @@ namespace Lesson_3_Lib
         /// <param name="arr">исходный массив</param>
         /// <param name="operations">количество затраченных на сортировку условных операций</param>
         /// <returns></returns>
-        public static int[] OptimizedBubbleSort(int[] arr, out int operations)
+        public int[] OptimizedBubbleSort(int[] arr, out int operations)
         {
             int temp;
+            int[] array = (int[])arr.Clone();
             operations = 0;
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 operations++;
-                for (int j = i + 1; j < arr.Length; j++)
+                for (int j = i + 1; j < array.Length; j++)
                 {
                     operations++;
-                    if (arr[i] > arr[j])
+                    if (array[i] > array[j])
                     {
-                        temp = arr[i];
-                        arr[i] = arr[j];
-                        arr[j] = temp;
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
                         operations++;
                     }
                 }
             }
-            return arr;
+            return array;
+        }
+
+        /// <summary>
+        /// Возвращает отсортированный шейкерным методом исходный массив
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public int[] ShakerSort(int[] arr, out int operations)
+        {
+            int temp;
+            int[] array = (int[])arr.Clone();
+            operations = 0;
+            int left = 0;
+            int right = array.Length;
+
+            while (right - left >= 0)
+            {
+                operations++;
+                for (int i = left+1; i < right; i++)
+                {
+                    operations++;
+                    if (array[left] > array[i])
+                    {
+                        temp = array[left];
+                        array[left] = array[i];
+                        array[i] = temp;
+                        operations++;
+                    }
+                }
+                right--;
+                for (int j = right; j > left; j--)
+                {
+                    operations++;
+                    if (array[right] < array[j])
+                    {
+                        temp = array[j];
+                        array[j] = array[right];
+                        array[right] = temp;
+                        operations++;
+                    }
+                }
+                left++;
+            }
+            return array;
         }
 
         /// <summary>
@@ -70,7 +124,7 @@ namespace Lesson_3_Lib
         /// </summary>
         /// <param name="length">длина массива</param>
         /// <returns></returns>
-        public static int[] RandomArray(int length, int min =0, int max = 11)
+        public int[] RandomArray(int length, int min =0, int max = 100)
         {
             Random rnd = new Random();
             int[] arr = new int[length];
@@ -82,53 +136,11 @@ namespace Lesson_3_Lib
         }
 
         /// <summary>
-        /// Возвращает отсортированный шейкерным методом исходный массив
-        /// </summary>
-        /// <param name="arr"></param>
-        /// <returns></returns>
-        public static int[] ShakerSort(int[] arr, out int operations)
-        {
-            int temp;
-            operations = 0;
-            int left = 0;
-            int right = arr.Length;
-
-            while (right - left >= 0)
-            {
-                operations++;
-                for (int i = left+1; i < right; i++)
-                {
-                    if (arr[left] > arr[i])
-                    {
-                        temp = arr[left];
-                        arr[left] = arr[i];
-                        arr[i] = temp;
-                        operations++;
-                    }
-                }
-                right--;
-                for (int j = right; j > left; j--)
-                {
-                    operations++;
-                    if (arr[right] < arr[j])
-                    {
-                        temp = arr[j];
-                        arr[j] = arr[right];
-                        arr[right] = temp;
-                        operations++;
-                    }
-                }
-                left++;
-            }
-            return arr;
-        }
-
-        /// <summary>
         /// Возвращает индекс искомого числа в массиве, или -1 при его отсутствии
         /// </summary>
         /// <param name="arr">отсортированный массив</param>
         /// <returns></returns>
-        public static int FindIndex(int[] arr, int find)
+        public int FindIndex(int[] arr, int find)
         {
             int minIndex = 0;
             int maxIndex = arr.Length;
@@ -160,6 +172,15 @@ namespace Lesson_3_Lib
             }
 
             return findIndex;
+        }
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="lengthArr">длина массива. По умолчанию = 100</param>
+        public ArrayTest(int lengthArr = 100)
+        {
+            arr = RandomArray(lengthArr);
         }
     }
 }

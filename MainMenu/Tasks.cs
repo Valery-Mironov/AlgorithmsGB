@@ -7,14 +7,25 @@
  * 
  * Задание 2*
  * Реализовать шейкерную сортировку
+ * 
+ * Задание 3
+ * Реализовать бинарный алгоритм поиска в виде функции, которой передаётся отсортированный массив.
+ * Функция возвращает индекс найденного элемента или –1, если элемент не найден.
+ * 
+ * Задание 4*
+ * Подсчитать количество операций для каждой из сортировок и сравнить его с асимптотической сложностью алгоритма.
  */
 
 using System;
 
 namespace Lesson_3_Lib
 {
-    public static class Tasks
+    /// <summary>
+    /// Консольный пользовательский интерфейс
+    /// </summary>
+    public class Tasks
     {
+        #region Messages
         static string msg1 = "Задание 1\nПопробовать оптимизировать пузырьковую сортировку.\n" +
             "Сравнить количество операций сравнения оптимизированной и неоптимизированной программы.\n" +
             "Написать функции сортировки, которые возвращают количество операций.";
@@ -24,75 +35,126 @@ namespace Lesson_3_Lib
         static string msg3 = "Задание 3\nРеализовать бинарный алгоритм поиска в виде функции, которой передаётся отсортированный массив.\n" +
             "Функция возвращает индекс найденного элемента или –1, если элемент не найден.";
 
-        static int testArrLength = 40;
-        static int[] arr;
+        static string msg4 = "4. *Подсчитать количество операций для каждой из сортировок и сравнить его с асимптотической сложностью алгоритма.\n";
+        #endregion
 
-        static int bubbleOperat;
-        static int optBubbleOperat;
-        static int shakeOperat;
+        /// <summary>
+        /// Количество тестов сортировки для расчета среднего значения
+        /// </summary>
+        int testArrLength;
 
-        public static void Task1()
+        /// <summary>
+        /// Экземпляр класса сортировки
+        /// </summary>
+        ArrayTest arrayTest;
+
+        /// <summary>
+        /// Экземпляр класса тестирования
+        /// </summary>
+        TestSorts test;
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="numTests">количество тестов</param>
+        /// <param name="testArrLength">длина массива</param>
+        public Tasks(int numTests, int testArrLength)
         {
-            arr = Array.RandomArray(testArrLength);
+            this.testArrLength = testArrLength;
+            this.arrayTest = new ArrayTest();
+            this.test = new TestSorts(numTests);
+        }
 
-            Greeting(msg1);
+        /// <summary>
+        /// Демонстрация решения задачи 1
+        /// </summary>
+        public void Task1()
+        {
 
-            PrintArr(arr, "\nИсходный массив:");
+            ConsoleIO_Lib.ConsolIO.Greeting(msg1);
+
+            PrintArr(arrayTest.RandomArray(testArrLength), "\nИсходный массив:");
             
-            PrintArr(Array.BubbleSort((int[])arr.Clone(), out bubbleOperat), "\nСортировка пузырьком:");
-            Console.WriteLine($"\nПроизведено {bubbleOperat} операций");
+            PrintArr(arrayTest.BubbleSort((int[])arrayTest.arr.Clone(), out test.BubbleOperat), "\nСортировка пузырьком:");
+            Console.WriteLine($"\nПроизведено {test.BubbleOperat} операций");
 
-            PrintArr(Array.OptimizedBubbleSort((int[])arr.Clone(), out optBubbleOperat), "\nСортировка улучшеным пузырьком:");
-            Console.WriteLine($"\nПроизведено {optBubbleOperat} операций\n");
+            PrintArr(arrayTest.OptimizedBubbleSort((int[])arrayTest.arr.Clone(), out test.OptBubbleOperat), "\nСортировка улучшеным пузырьком:");
+            Console.WriteLine($"\nПроизведено {test.OptBubbleOperat} операций\n");
 
             ConsoleIO_Lib.ConsolIO.PauseClear();
         }
 
-        public static void Task2()
+        /// <summary>
+        /// Демонстрация решения задачи 2
+        /// </summary>
+        public void Task2()
         {
-            arr = Array.RandomArray(testArrLength);
-            Greeting(msg2);
+            ConsoleIO_Lib.ConsolIO.Greeting(msg2);
 
-            PrintArr(arr, "Исходный массив");
+            PrintArr(arrayTest.RandomArray(testArrLength), "Исходный массив");
             
-            PrintArr(Array.ShakerSort((int[])arr.Clone(), out shakeOperat), "\nШейкерная сортировка");
-            Console.WriteLine($"\nПроизведено {shakeOperat} операций\n");
+            PrintArr(arrayTest.ShakerSort((int[])arrayTest.arr.Clone(), out test.ShakeOperat), "\nШейкерная сортировка");
+            Console.WriteLine($"\nПроизведено {test.ShakeOperat} операций\n");
 
             ConsoleIO_Lib.ConsolIO.PauseClear();
         }
 
-        public static void Task3()
+        /// <summary>
+        /// Демонстрация решения задачи 3
+        /// </summary>
+        public void Task3()
         {
-            arr = Array.RandomArray(testArrLength, 0, 151);
             int findNumb;
-            int[] sortedArr = Array.ShakerSort((int[])arr.Clone(), out shakeOperat);
-            Greeting(msg3);
+            int[] sortedArr = arrayTest.ShakerSort((int[])arrayTest.arr.Clone(), out test.ShakeOperat);
+            ConsoleIO_Lib.ConsolIO.Greeting(msg3);
 
             PrintArr(sortedArr, "Отсортированный массив:");
 
             Console.WriteLine("\nВведите число для поиска:");
             findNumb = ConsoleIO_Lib.ConsolIO.GetNumber();
-            Console.WriteLine($"\nИндекс искомого числа: {Array.FindIndex(sortedArr,findNumb)}"); 
+            Console.WriteLine($"\nИндекс искомого числа: {arrayTest.FindIndex(sortedArr,findNumb)}"); 
             Console.ReadKey();
         }
 
         /// <summary>
-        /// Чистит консоль и выводит условие задачи
+        /// Демонстрация решения задачи 4
         /// </summary>
-        /// <param name="msg"></param>
-        static void Greeting(string msg)
+        public void Task4()
         {
-            Console.Clear();
-            Console.WriteLine(msg);
-            Console.WriteLine("Нажмите любую клавишу...");
-            Console.ReadKey(true);
+            ConsoleIO_Lib.ConsolIO.Greeting(msg4);
+
+            Console.WriteLine($"Тестируем сортировку {test.SmalArr.Length} массивов из {test.SmalArr[0].Length} элементов...");
+            test.RunTestSorts(test.SmalArr);
+            PrintTestResult();
+
+            Console.WriteLine($"Тестируем сортировку {test.MedArr.Length} массивов из {test.MedArr[0].Length} элементов...");
+            test.RunTestSorts(test.MedArr);
+            PrintTestResult();
+
+            Console.WriteLine($"Тестируем сортировку {test.LargeArr.Length} массивов из {test.LargeArr[0].Length} элементов...");
+            test.RunTestSorts(test.LargeArr);
+            PrintTestResult();
+
+            Console.WriteLine("Для выхода нажмите любую клавишу...");
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Выводит в консоль результат тестирования
+        /// </summary>
+        void PrintTestResult()
+        {
+            Console.WriteLine($"Среднее количество операций методом пузырька: \t\t {test.BubbleOperat,15:### ### ###}");
+            Console.WriteLine($"Среднее количество операций улучшенным методом пузырька: {test.OptBubbleOperat,15:### ### ###}");
+            Console.WriteLine($"Среднее количество шейкерным методом \t\t\t {test.ShakeOperat,15:### ### ###}");
+            Console.WriteLine("Тест завершен!\n");
         }
 
         /// <summary>
         /// Выводит в консоль массив
         /// </summary>
         /// <param name="arr"></param>
-        static void PrintArr(int[] arr, string msg)
+        void PrintArr(int[] arr, string msg)
         {
             Console.WriteLine($"\n{msg}");
             foreach (int item in arr)

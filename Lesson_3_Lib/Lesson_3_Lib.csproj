@@ -42,7 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Array.cs" />
+    <Compile Include="ArrayTest.cs" />
+    <Compile Include="TestSorts.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsoleIO_Lib\ConsoleIO_Lib.csproj">
