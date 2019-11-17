@@ -13,6 +13,7 @@
  * 
  */
 
+using Lesson_4_Lib;
 using System;
 
 namespace Lesson_4
@@ -49,14 +50,50 @@ namespace Lesson_4
         /// <summary>
         /// Демонстрация решения задачи 1
         /// </summary>
-        public void Task1()
+        public void Task1(int height, int width)
         {
+            Matrix matr = new Matrix(height, width);
 
-            ConsoleIO_Lib.ConsolIO.Greeting(message[0]);
+            ConsoleIO_Lib.ConsolIO.Greeting(this.message[0]);
 
+            matr.Desk[3, 4] = -1;
+            matr.Desk[4, 4] = -1;
+            matr.Desk[3, 5] = -1;
+            matr.MatrixCalc(0, 0);
 
+            PrintResult(matr);
             ConsoleIO_Lib.ConsolIO.PauseClear();
         }
+
+        private void PrintResult(Matrix matr)
+        {
+            Console.Clear();
+            PrintMatrix(matr.Desk, "Таблица поля ходов");
+            Console.WriteLine("\n\n");
+            PrintMatrix(matr.Moves, "Таблица возможных ходов");
+            Console.WriteLine();
+        }
+
+        public void PrintMatrix(int[,] matrix, string msg)
+        {
+            Console.SetCursorPosition((Console.WindowWidth - msg.Length) /2-6, Console.CursorTop);
+            Console.WriteLine($"- = {msg} = -");
+            for (int j = 0; j < matrix.Length/matrix.GetLength(0); j++)
+            {
+                Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------");
+                Console.Write("|");
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    if (matrix[i, j] < 0) Console.Write(string.Format("\t{0:0}\t|", "X"));
+                    else if (matrix[i, j] == 0) Console.Write(string.Format("\t{0:0}\t|", 0));
+                    else Console.Write(string.Format("\t{0:0}\t|", matrix[i, j]));
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------");
+        }
+
+
 
         /// <summary>
         /// Демонстрация решения задачи 2

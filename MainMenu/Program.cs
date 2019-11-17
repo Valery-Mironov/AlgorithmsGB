@@ -30,6 +30,8 @@ namespace MainMenu
         public static Tasks tasks = new Tasks(tasksMsg);
         static void Main(string[] args)
         {
+            Console.WindowWidth = 130;
+            Console.WindowHeight = 42;
             int numb;
             do
             {
@@ -45,7 +47,7 @@ namespace MainMenu
                 {
                     case 0: break;
                     case 1:
-                        tasks.Task1();
+                        tasks.Task1(8,8);
                         break;
                     case 2:
                         tasks.Task2();
