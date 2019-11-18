@@ -120,10 +120,11 @@ namespace Lesson_4
         public void Task3()
         {
             ConsoleIO_Lib.ConsolIO.Greeting(message[2]);
+            ConsoleKeyInfo key;
 
             Horse horse = new Horse(8, 8);
-
-            ConsoleIO_Lib.ConsolIO.PauseClear();
+            horse.result = new Horse.Result(ConsoleIO_Lib.ConsolIO.PrintDesk);
+            horse.Run(0,0);
         }
     }
 }

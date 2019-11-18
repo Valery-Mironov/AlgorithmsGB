@@ -53,5 +53,34 @@ namespace ConsoleIO_Lib
             Console.Clear();
             Console.WriteLine(msg);
         }
+
+        public static bool PrintDesk(int[,] matr)
+        {
+            bool exit = false;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("{0,3}{1,3}{2,3}{3,3}{4,3}{5,3}{6,3}{7,3}{8,3}\n", " ", "A", "B", "C", "D", "E", "F", "G", "H");
+            Console.ResetColor();
+            for (int i = 0; i < matr.GetLength(1); i++)
+            {
+                for (int j = 0; j < matr.GetLength(0); j++)
+                {
+                    if (j == 0) { Console.ForegroundColor = ConsoleColor.DarkYellow; Console.Write($"{i + 1,3}"); Console.ResetColor(); }
+                    if (matr[i, j] == 0) Console.Write("{0,3}", "*");
+                    else Console.Write($"{matr[i, j],3}");
+                }
+                Console.WriteLine();
+            }
+            //Console.ReadKey();
+
+            ConsoleKeyInfo key;
+
+            Console.WriteLine("\nДля вывода следующего варианта решения - нажмите любую клавишу...\nДля возврата в основное меню - нажмите \"Esc\"");
+            key = Console.ReadKey(true);
+            Console.Clear();
+            if (key.Key == ConsoleKey.Escape) exit = true;
+            return exit;
+
+        }
     }
 }
