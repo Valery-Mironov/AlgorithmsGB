@@ -107,12 +107,22 @@ namespace Lesson_4
         /// </summary>
         public void Task2()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(message[1]);
+            int[] a = new int[] { 1, 5, 2, 4, 9, 7, 3 };
+            int[] b = new int[] { 1, 5, 3, 2, 5, 6, 9, 7 };
 
-            MatrixPlantly matrixPlantly = new MatrixPlantly(new int[] {1,5,2,4,9,7,3 }, new int[] {1,5,3,2,5,6,9,7 });
+            ConsoleIO_Lib.ConsolIO.Greeting(message[1]);
+            int length;
+            MatrixPlantly matrixPlantly = new MatrixPlantly(a, b);
+            length = matrixPlantly.Run();
+
+            ConsoleIO_Lib.ConsolIO.PrintMatrix(matrixPlantly.MatrixPl);
+            Console.WriteLine($"\nДлина максимальной подпоследовательности = {length} \n");
 
             ConsoleIO_Lib.ConsolIO.PauseClear();
         }
+
+        
+
 
         /// <summary>
         /// Демонстрация решения задачи 3
