@@ -121,6 +121,8 @@ namespace Lesson_4
         {
             ConsoleIO_Lib.ConsolIO.Greeting(message[2]);
 
+            Horse horse = new Horse(8, 8);
+
             ConsoleIO_Lib.ConsolIO.PauseClear();
         }
     }

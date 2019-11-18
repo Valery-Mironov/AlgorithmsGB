@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Horse.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="MatrixPlantly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
