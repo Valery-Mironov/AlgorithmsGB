@@ -65,6 +65,10 @@ namespace Lesson_4
             ConsoleIO_Lib.ConsolIO.PauseClear();
         }
 
+        /// <summary>
+        /// Выводит в консоль матрицу поля и матрицу количества ходов
+        /// </summary>
+        /// <param name="matr"></param>
         private void PrintResult(Matrix matr)
         {
             Console.Clear();
@@ -74,6 +78,11 @@ namespace Lesson_4
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Выводит в консоль матрицу в табличном виде
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="msg"></param>
         public void PrintMatrix(int[,] matrix, string msg)
         {
             Console.SetCursorPosition((Console.WindowWidth - msg.Length) /2-6, Console.CursorTop);
@@ -93,8 +102,6 @@ namespace Lesson_4
             Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------");
         }
 
-
-
         /// <summary>
         /// Демонстрация решения задачи 2
         /// </summary>
@@ -102,6 +109,7 @@ namespace Lesson_4
         {
             ConsoleIO_Lib.ConsolIO.Greeting(message[1]);
 
+            MatrixPlantly matrixPlantly = new MatrixPlantly(new int[] {1,5,2,4,9,7,3 }, new int[] {1,5,3,2,5,6,9,7 });
 
             ConsoleIO_Lib.ConsolIO.PauseClear();
         }
