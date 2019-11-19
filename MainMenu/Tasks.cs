@@ -1,31 +1,45 @@
 ﻿/* Антон Алиев
- * Алгоритмы, домашнее задание к уроку 4. 
+ * Алгоритмы, домашнее задание к уроку 5. 
  * 
- * Задание 1*
- * Количество маршрутов с препятствиями. Реализовать чтение массива с препятствием и нахождение количество маршрутов.
+ * Задание 1
+ * Реализовать перевод из десятичной в двоичную систему счисления с использованием стека.
  * 
  * Задание 2
- * Решить задачу о нахождении длины максимальной подпоследовательности с помощью матрицы.
+ * Добавить в программу «Реализация стека на основе односвязного списка» проверку на выделение памяти. 
+ * Если память не выделяется, то должно выводиться соответствующее сообщение. Постарайтесь создать ситуацию,
+ * когда память не будет выделяться (добавлением большого количества данных).
  * 
- * Задание 3***
- * Требуется обойти конём шахматную доску размером N × M, пройдя через все поля доски по одному разу.
- * Здесь алгоритм решения такой же, как и в задаче о 8 ферзях. Разница только в проверке положения коня.
+ * Задание 3
+ * Написать программу, которая определяет, является ли введённая скобочная последовательность правильной.
+ * Примеры правильных скобочных выражений – (), ([])(), {}(), ([{}]), неправильных – )(, ())({), (, ])}), ([(]),
+ * для скобок – [, (, {. Например: (2+(2*2)) или [2/{5*(4+7)}].
+ * 
+ * Задание 4*
+ * Создать функцию, копирующую односвязный список (то есть создающую в памяти копию односвязного списка без удаления первого списка).
+ * 
+ * Задание 5*
+ * Реализовать алгоритм перевода из инфиксной записи арифметического выражения в постфиксную.
+ * 
+ * Задание 6
+ * Реализовать очередь: a) С использованием массива. b*) С использованием односвязного списка.
+ * 
+ * Задание 7*
+ * Реализовать двустороннюю очередь.
  * 
  */
 
-using Lesson_4_Lib;
 using System;
 
-/// <summary>
-/// Библиотека практических заданий к уроку 4 курса "алгоритмы"
-/// </summary>
-namespace Lesson_4
+namespace Main
 {
     /// <summary>
     /// Консольный пользовательский интерфейс
     /// </summary>
     public class Tasks
     {
+        /// <summary>
+        /// Сообщения для ввывода
+        /// </summary>
         string[] message;
 
         /// <summary>
@@ -43,23 +57,9 @@ namespace Lesson_4
         /// </summary>
         public void Task1()
         {
-            Matrix matr = new Matrix();
             ConsoleIO_Lib.ConsolIO.Greeting(this.message[1]);
 
-            // формирование препятствий
-            matr.Desk[2, 4] = -1;
-            matr.Desk[3, 3] = -1;
-            matr.Desk[3, 4] = -1;
-            matr.Desk[4, 4] = -1;
-            matr.Desk[3, 5] = -1;
-
-            matr.Run();
-
-            ConsoleIO_Lib.ConsolIO.PrintMatrix(matr.Desk, "Таблица поля ходов с препятствиями");
-            Console.WriteLine("\n");
-            ConsoleIO_Lib.ConsolIO.PrintMatrix(matr.Moves, "Таблица количества ходов");
             Console.WriteLine("Нажмите любую клавишу...");
-
             Console.ReadKey();
         }
 
@@ -68,18 +68,10 @@ namespace Lesson_4
         /// </summary>
         public void Task2()
         {
-            int[] a = new int[] { 1, 5, 2, 4, 9, 7, 3 };
-            int[] b = new int[] { 1, 5, 3, 2, 5, 6, 9, 7 };
+            ConsoleIO_Lib.ConsolIO.Greeting(this.message[2]);
 
-            ConsoleIO_Lib.ConsolIO.Greeting(message[2]);
-            int length;
-            MatrixPlantly matrixPlantly = new MatrixPlantly(a, b);
-            length = matrixPlantly.Run();
-
-            ConsoleIO_Lib.ConsolIO.PrintMatrix(matrixPlantly.MatrixPl);
-            Console.WriteLine($"\nДлина максимальной подпоследовательности = {length} \n");
-
-            ConsoleIO_Lib.ConsolIO.PauseClear();
+            Console.WriteLine("Нажмите любую клавишу...");
+            Console.ReadKey();
         }
 
         /// <summary>
@@ -87,12 +79,54 @@ namespace Lesson_4
         /// </summary>
         public void Task3()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(message[3]);
-            ConsoleKeyInfo key;
+            ConsoleIO_Lib.ConsolIO.Greeting(this.message[3]);
 
-            Horse horse = new Horse(8, 8);
-            horse.result = new Horse.Result(ConsoleIO_Lib.ConsolIO.PrintDesk);
-            horse.Run(0,0);
+            Console.WriteLine("Нажмите любую клавишу...");
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Демонстрация решения задачи 4
+        /// </summary>
+        public void Task4()
+        {
+            ConsoleIO_Lib.ConsolIO.Greeting(this.message[4]);
+
+            Console.WriteLine("Нажмите любую клавишу...");
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Демонстрация решения задачи 5
+        /// </summary>
+        public void Task5()
+        {
+            ConsoleIO_Lib.ConsolIO.Greeting(this.message[5]);
+
+            Console.WriteLine("Нажмите любую клавишу...");
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Демонстрация решения задачи 6
+        /// </summary>
+        public void Task6()
+        {
+            ConsoleIO_Lib.ConsolIO.Greeting(this.message[6]);
+
+            Console.WriteLine("Нажмите любую клавишу...");
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Демонстрация решения задачи 7
+        /// </summary>
+        public void Task7()
+        {
+            ConsoleIO_Lib.ConsolIO.Greeting(this.message[7]);
+
+            Console.WriteLine("Нажмите любую клавишу...");
+            Console.ReadKey();
         }
     }
 }
