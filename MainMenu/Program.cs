@@ -39,10 +39,7 @@ namespace MainMenu
             do
             {
 				Console.Clear();
-				//Console.WriteLine("Антон Алиев\tДомашнее задание к уроку 4\tКурс Алгоритмы GB\n");
-
 				foreach(string msg in tasksMsg) Console.WriteLine(msg + "\n");
-
                 Console.WriteLine($"Для демонстрации решения задачи - ввдете номер задачи и нажмите \"Enter\"\nДля выхода введите - 0\n");
 
                 numb = ConsoleIO_Lib.ConsolIO.GetNumber();
