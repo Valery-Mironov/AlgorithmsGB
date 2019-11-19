@@ -22,21 +22,24 @@ namespace MainMenu
     {
         public static string[] tasksMsg = new string[]
                 {
-                    "Задание 1*\nКоличество маршрутов с препятствиями.\nРеализовать чтение массива с препятствием и нахождение количество маршрутов.",
+                    "Антон Алиев. Домашнее задание №4",
+                    "Задание 1*\nКоличество маршрутов с препятствиями.\nРеализовать чтение массива с препятствием и нахождение количества маршрутов.",
                     "Задание 2\nРешить задачу о нахождении длины максимальной подпоследовательности с помощью матрицы.",
                     "Задание 3***\nТребуется обойти конём шахматную доску размером N × M, пройдя через все поля доски по одному разу.\n" +
                     "Здесь алгоритм решения такой же, как и в задаче о 8 ферзях. Разница только в проверке положения коня.",
                 };
         public static Tasks tasks = new Tasks(tasksMsg);
+
         static void Main(string[] args)
         {
+            Console.Title = tasksMsg[0];
             Console.WindowWidth = 130;
-            Console.WindowHeight = 42;
+            Console.WindowHeight = 45;
             int numb;
             do
             {
 				Console.Clear();
-				Console.WriteLine("Антон Алиев\tДомашнее задание к уроку 4\tКурс Алгоритмы GB\n");
+				//Console.WriteLine("Антон Алиев\tДомашнее задание к уроку 4\tКурс Алгоритмы GB\n");
 
 				foreach(string msg in tasksMsg) Console.WriteLine(msg + "\n");
 
@@ -47,7 +50,7 @@ namespace MainMenu
                 {
                     case 0: break;
                     case 1:
-                        tasks.Task1(8,8);
+                        tasks.Task1();
                         break;
                     case 2:
                         tasks.Task2();

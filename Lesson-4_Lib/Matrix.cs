@@ -1,18 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/* Антон Алиев
+ * Алгоритмы, домашнее задание к уроку 4. 
+ * 
+ * Задание 1*
+ * Количество маршрутов с препятствиями. Реализовать чтение массива с препятствием и нахождение количество маршрутов.
+ * 
+ */
 
 namespace Lesson_4_Lib
 {
+    /// <summary>
+    /// Читает поля с препятствиями и строит матрицу количества маршрутов
+    /// </summary>
     public class Matrix
     {
         /// <summary>
         /// Матрица значений количества путей
         /// </summary>
         public int[,] Moves { get; private set; }
+
+        /// <summary>
+        /// Матрица поля с препятствиями
+        /// </summary>
         public int[,] Desk { get; set; }
 
         /// <summary>
@@ -30,7 +38,7 @@ namespace Lesson_4_Lib
         /// </summary>
         /// <param name="w">Ширина поля</param>
         /// <param name="h">Высота поля</param>
-        public Matrix(int h, int w)
+        public Matrix(int h =8, int w=8)
         {
             this.width = w;
             this.height = h;
@@ -41,11 +49,21 @@ namespace Lesson_4_Lib
         }
 
         /// <summary>
+        /// Запускает расчет количества маршрутов
+        /// </summary>
+        /// <returns></returns>
+        public int[,] Run()
+        {
+            MatrixCalc(width, height);
+            return Desk;
+        }
+
+        /// <summary>
         /// Рассчитывает и заполняет матрицу ходов, с учетом препядствий
         /// </summary>
         /// <param name="matrix">Матрица количества ходов</param>
         /// <param name="desk">Матрица поля с препядствиями</param>
-        public void MatrixCalc(int n , int m)
+        void MatrixCalc(int n , int m)
         {
             for (int j = 0; j < height; j++)
             {
@@ -58,10 +76,10 @@ namespace Lesson_4_Lib
                 {
                     if (Desk[i, j] ==1)
                     {
-                        Moves[i, j] = Moves[i, j-1] + Moves[i-1, j];
+                        if (Moves[i, j - 1] == 0 ^ Moves[i - 1, j] == 0) Moves[i, j] = Moves[i, j - 1] + Moves[i - 1, j] +1;
+                        else Moves[i, j] = Moves[i, j - 1] + Moves[i - 1, j];
                     }
-                    else if((Desk[i, j] ==-1)) Moves[i, j] = -1;
-                    else Moves[i, j] = 0;
+                    else  Moves[i, j] = 0;
                 }
             }
         }
@@ -79,7 +97,5 @@ namespace Lesson_4_Lib
                 }
             }
         }
-
-        
     }
 }

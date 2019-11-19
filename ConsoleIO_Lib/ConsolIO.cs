@@ -119,5 +119,29 @@ namespace ConsoleIO_Lib
             Console.ResetColor();
             Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
         }
+
+        /// <summary>
+        /// Выводит в консоль матрицу количества ходов в табличном виде
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="msg"></param>
+        public static void PrintMatrix(int[,] matrix, string msg)
+        {
+            Console.SetCursorPosition((Console.WindowWidth - msg.Length) / 2 - 6, Console.CursorTop + 1);
+            Console.WriteLine($"- = {msg} = -");
+            for (int j = 0; j < matrix.Length / matrix.GetLength(0); j++)
+            {
+                Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------");
+                Console.Write("|");
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    if (matrix[i, j] == -1) Console.Write(string.Format("\t{0:0}\t|", "X"));
+                    else if (matrix[i, j] == 0 || matrix[i, j] < -1) Console.Write(string.Format("\t{0:0}\t|", "0"));
+                    else Console.Write(string.Format("\t{0:0}\t|", matrix[i, j]));
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------");
+        }
     }
 }
