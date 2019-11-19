@@ -1,7 +1,13 @@
 ﻿using System;
 
+/// <summary>
+/// Бибилиотека для удобства работы с консолью
+/// </summary>
 namespace ConsoleIO_Lib
 {
+    /// <summary>
+    /// Методы для работы с консолью
+    /// </summary>
     public static class ConsolIO
     {
         /// <summary>
@@ -16,7 +22,7 @@ namespace ConsoleIO_Lib
             bool isCorrect = false;
             do
             {
-                Console.WriteLine($"Введите {msg1} {msg2}");
+                Console.WriteLine(msg1, msg2);
                 str = Console.ReadLine();
                 isCorrect = int.TryParse(str, out result);
                 if (!isCorrect)
@@ -36,6 +42,106 @@ namespace ConsoleIO_Lib
             Console.WriteLine("Нажмите любую клавишу...");
             Console.ReadKey();
             Console.Clear();
+        }
+
+        /// <summary>
+        /// Чистит консоль и выводит условие задачи
+        /// </summary>
+        /// <param name="msg"></param>
+        public static void Greeting(string msg)
+        {
+            Console.Clear();
+            Console.WriteLine(msg);
+        }
+
+        /// <summary>
+        /// Выводит в консоль матрицу шахматного поля
+        /// </summary>
+        /// <param name="matr"></param>
+        /// <returns></returns>
+        public static bool PrintDesk(int[,] matr)
+        {
+            bool exit = false;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("{0,3}{1,3}{2,3}{3,3}{4,3}{5,3}{6,3}{7,3}{8,3}\n", " ", "A", "B", "C", "D", "E", "F", "G", "H");
+            Console.ResetColor();
+            for (int i = 0; i < matr.GetLength(1); i++)
+            {
+                for (int j = 0; j < matr.GetLength(0); j++)
+                {
+                    if (j == 0) { Console.ForegroundColor = ConsoleColor.DarkYellow; Console.Write($"{i + 1,3}"); Console.ResetColor(); }
+                    if (matr[i, j] == 0) Console.Write("{0,3}", "*");
+                    else Console.Write($"{matr[i, j],3}");
+                }
+                Console.WriteLine();
+            }
+            //Console.ReadKey();
+
+            ConsoleKeyInfo key;
+
+            Console.WriteLine("\nДля вывода следующего варианта решения - нажмите любую клавишу...\nДля возврата в основное меню - нажмите \"Esc\"");
+            key = Console.ReadKey(true);
+            Console.Clear();
+            if (key.Key == ConsoleKey.Escape) exit = true;
+            return exit;
+
+        }
+
+        /// <summary>
+        /// Выводит в консоль матрицу пересечения множеств
+        /// </summary>
+        /// <param name="matr"></param>
+        public static void PrintMatrix(int[,] matr)
+        {
+            for (int j = 0; j < matr.Length / matr.GetLength(0); j++)
+            {
+                if (j <= 1) Console.ForegroundColor = ConsoleColor.DarkYellow;
+                else Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("-----------------");
+                if (j <= 1) Console.ForegroundColor = ConsoleColor.DarkYellow;
+                else Console.ResetColor();
+                Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("|");
+                Console.ResetColor();
+                for (int i = 0; i < matr.GetLength(0); i++)
+                {
+                    if (i == 0 || j == 0) Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    else Console.ResetColor();
+                    Console.Write(string.Format("\t{0:0}\t|", matr[i, j]));
+                }
+                Console.WriteLine();
+            }
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("-----------------");
+            Console.ResetColor();
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
+        }
+
+        /// <summary>
+        /// Выводит в консоль матрицу количества ходов в табличном виде
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="msg"></param>
+        public static void PrintMatrix(int[,] matrix, string msg)
+        {
+            Console.SetCursorPosition((Console.WindowWidth - msg.Length) / 2 - 6, Console.CursorTop + 1);
+            Console.WriteLine($"- = {msg} = -");
+            for (int j = 0; j < matrix.Length / matrix.GetLength(0); j++)
+            {
+                Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------");
+                Console.Write("|");
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    if (matrix[i, j] == -1) Console.Write(string.Format("\t{0:0}\t|", "X"));
+                    else if (matrix[i, j] == 0 || matrix[i, j] < -1) Console.Write(string.Format("\t{0:0}\t|", "0"));
+                    else Console.Write(string.Format("\t{0:0}\t|", matrix[i, j]));
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------");
         }
     }
 }

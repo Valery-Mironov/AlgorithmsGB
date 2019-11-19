@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{99106914-9BAB-451B-89AC-1016417C8491}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Lesson_1</RootNamespace>
-    <AssemblyName>Lesson-1</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <ProjectGuid>{EE55F558-59A3-4C51-9337-6F0569BD58B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lesson_2_Lib</RootNamespace>
+    <AssemblyName>Lesson-2_Lib</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,20 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Task-1\Task-1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
+    <Compile Include="Task-1\MyConvert.cs" />
+    <Compile Include="Task-2\Task-2.cs" />
+    <Compile Include="Task-3\Calculator.cs" />
+    <Compile Include="Task-3\ConsoleGame.cs" />
+    <Compile Include="Task-3\Task-3.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsoleIO_Lib\ConsoleIO_Lib.csproj">
       <Project>{e17d154c-e7fc-4d70-ab93-58970df73405}</Project>
       <Name>ConsoleIO_Lib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Lesson-1_Lib\Lesson-1_Lib.csproj">
-      <Project>{c6eb88e7-bb23-48b2-8d67-e2b0c9d390f7}</Project>
-      <Name>Lesson-1_Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
