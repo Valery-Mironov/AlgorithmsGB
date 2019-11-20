@@ -35,7 +35,25 @@ using System.Threading.Tasks;
 
 namespace Lesson_5_Lib
 {
+    /// <summary>
+    /// Конверитрует число из десятичной системы счисления в двоичную, с использованием стека
+    /// </summary>
     public class Dec2BinStek
     {
+        /// <summary>
+        /// Число в десятичной системе
+        /// </summary>
+        int DecNumder;
+
+        /// <summary>
+        /// Число в двоичной системе
+        /// </summary>
+        int[] BinNumder;
+
+        public Dec2BinStek()
+        {
+                
+        }
     }
+        
 }

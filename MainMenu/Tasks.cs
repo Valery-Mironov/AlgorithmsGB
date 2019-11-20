@@ -28,6 +28,7 @@
  * 
  */
 
+using Lesson_5_Lib;
 using System;
 
 namespace Main
@@ -58,7 +59,18 @@ namespace Main
         public void Task1()
         {
             ConsoleIO_Lib.ConsolIO.Greeting(this.message[1]);
+            MyStack<int> stack = new MyStack<int>();
 
+            for (int i = 0; i < 9; i++)
+            {
+                Console.WriteLine(stack.Push(ConsoleIO_Lib.ConsolIO.GetNumber("Введите очередное целое число: ")));
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write($" {stack.Pop()}\n");
+            }
+            
             Console.WriteLine("Нажмите любую клавишу...");
             Console.ReadKey();
         }
