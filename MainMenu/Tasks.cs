@@ -44,6 +44,11 @@ namespace Main
         string[] message;
 
         /// <summary>
+        /// Нажатая клавиша
+        /// </summary>
+        ConsoleKeyInfo key;
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="numTests">количество тестов</param>
@@ -58,19 +63,20 @@ namespace Main
         /// </summary>
         public void Task1()
         {
-            Binary bin = new Binary();
-            Binary bin2 = new Binary();
-            ConsoleIO_Lib.ConsolIO.Greeting(this.message[1]);
-            bin = Dec2BinStek.Dec2Bin(1);
-            bin2 = Dec2BinStek.Dec2Bin(-1);
+            do
+            {
+                ConsoleIO_Lib.ConsolIO.Greeting(this.message[1]);
+                int dec = ConsoleIO_Lib.ConsolIO.GetNumber($"\nВведите целое число в диапазоне от {int.MinValue} до {int.MaxValue}\n");
+                Binary bin = Dec2BinStek.Dec2Bin(dec);
 
-            Console.WriteLine($"{bin:0000 0000 0000 0000}");
-            Console.WriteLine(bin2);
-            Console.WriteLine("{0:0000 0000 0000 0000}", 1);
+                Console.Clear();
+                Console.WriteLine($"Dec {dec}\nBin {bin}");
 
-
-            Console.WriteLine("Нажмите любую клавишу...");
-            Console.ReadKey();
+                Console.WriteLine("\nДля выхода нажмите \"Esc\"");
+                Console.WriteLine("Нажмите любую клавишу...");
+                key = Console.ReadKey();
+            }
+            while (key.Key != ConsoleKey.Escape);
         }
 
         /// <summary>

@@ -95,12 +95,28 @@ namespace Lesson_5_Lib
         public override string ToString()
         {
             string str ="";
-            foreach (bool item in cat)
+            bool flag = false;
+            
+            for (int i = 0; i < cat.Length / 4; i++)
             {
-                if (item) str += "1";
-                else str += "0";
+                for (int j = 0; j < 4; j++)
+                {
+                    if (!flag && !cat[i * 4 + j]) continue;
+                    else flag = true;
+                }
+                if (flag)
+                {
+                    for (int k = 0; k < 4; k++)
+                    {
+                        if (cat[i * 4 + k]) str += 1;
+                        else str += 0;
+                    }
+                    str+=" ";
+                }
             }
-            return  str;
+            if (!flag) str+=0;
+            
+            return str;
         }
     }
         
