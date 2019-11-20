@@ -28,6 +28,7 @@
  * 
  */
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,21 +39,68 @@ namespace Lesson_5_Lib
     /// <summary>
     /// Конверитрует число из десятичной системы счисления в двоичную, с использованием стека
     /// </summary>
-    public class Dec2BinStek
+    public static class Dec2BinStek
     {
-        /// <summary>
-        /// Число в десятичной системе
-        /// </summary>
-        int DecNumder;
-
-        /// <summary>
-        /// Число в двоичной системе
-        /// </summary>
-        int[] BinNumder;
-
-        public Dec2BinStek()
+        public static Binary Dec2Bin(int decNumb)
         {
+            Binary binNumb = new Binary();
+            MyStack<bool> stack = new MyStack<bool>();
+            int temp;
+            if (decNumb == 0) binNumb = default;
+            {
+
+            }
+            if(decNumb > 0)
+            {
+                temp = decNumb;
+                for (int i = 0; i < binNumb.Length; i++)
+                {
+                    stack.Push(temp % 2 == 1);
+                    temp /= 2;
+                }
                 
+            }
+            if (decNumb < 0)
+            {
+                temp = Math.Abs(decNumb + 1);
+                for (int i = 0; i < binNumb.Length; i++)
+                {
+                    stack.Push(temp % 2 == 0);
+                    temp /= 2;
+                }
+            }
+
+            for (int i = 0; i < binNumb.Length; i++)
+            {
+                binNumb.cat[i] = stack.Pop();
+            }
+
+            return binNumb;
+        }
+    }
+
+    /// <summary>
+    /// Представляет двуичное число в видее массива bool[]
+    /// </summary>
+    public class Binary
+    {
+        public bool[] cat;
+        public int Length { get; private set; }
+        public Binary(int length = 32)
+        {
+            Length = length;
+            cat = new bool[Length];    
+        }
+
+        public override string ToString()
+        {
+            string str ="";
+            foreach (bool item in cat)
+            {
+                if (item) str += "1";
+                else str += "0";
+            }
+            return  str;
         }
     }
         

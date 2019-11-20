@@ -58,19 +58,17 @@ namespace Main
         /// </summary>
         public void Task1()
         {
+            Binary bin = new Binary();
+            Binary bin2 = new Binary();
             ConsoleIO_Lib.ConsolIO.Greeting(this.message[1]);
-            MyStack<int> stack = new MyStack<int>();
+            bin = Dec2BinStek.Dec2Bin(1);
+            bin2 = Dec2BinStek.Dec2Bin(-1);
 
-            for (int i = 0; i < 9; i++)
-            {
-                Console.WriteLine(stack.Push(ConsoleIO_Lib.ConsolIO.GetNumber("Введите очередное целое число: ")));
-            }
+            Console.WriteLine($"{bin:0000 0000 0000 0000}");
+            Console.WriteLine(bin2);
+            Console.WriteLine("{0:0000 0000 0000 0000}", 1);
 
-            for (int i = 0; i < 10; i++)
-            {
-                Console.Write($" {stack.Pop()}\n");
-            }
-            
+
             Console.WriteLine("Нажмите любую клавишу...");
             Console.ReadKey();
         }
