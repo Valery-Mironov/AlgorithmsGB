@@ -82,7 +82,10 @@ namespace Lesson_5_Lib
                 IsEmpty = false;
                 return true;
             }
-            return false;
+            else
+            {
+                throw new System.StackOverflowException("Попытка поместить данные в стек вызвала переполнение стека");
+            }
         }
 
         /// <summary>
@@ -119,6 +122,26 @@ namespace Lesson_5_Lib
             header = -1;
             IsEmpty = true;
             IsFull = false;
+        }
+
+        /// <summary>
+        /// Возвращает содержимое стека в виде строки
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            string result = string.Empty;
+            int position = 1;
+            if (IsEmpty) return "Стек пуст!";
+            else
+            {
+                for (int i = header; i >= 0; i--)
+                {
+                    result += string.Format($"\n{position} => {stek[i]}");
+                    position++;
+                }
+            }
+            return result;
         }
     }
         

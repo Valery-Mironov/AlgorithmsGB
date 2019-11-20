@@ -46,10 +46,7 @@ namespace Lesson_5_Lib
             Binary binNumb = new Binary();
             MyStack<bool> stack = new MyStack<bool>();
             int temp;
-            if (decNumb == 0) binNumb = default;
-            {
-
-            }
+            if (decNumb == 0) return binNumb;
             if(decNumb > 0)
             {
                 temp = decNumb;
@@ -58,7 +55,6 @@ namespace Lesson_5_Lib
                     stack.Push(temp % 2 == 1);
                     temp /= 2;
                 }
-                
             }
             if (decNumb < 0)
             {
@@ -96,12 +92,11 @@ namespace Lesson_5_Lib
         {
             string str ="";
             bool flag = false;
-            
             for (int i = 0; i < cat.Length / 4; i++)
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    if (!flag && !cat[i * 4 + j]) continue;
+                    if (!flag && !cat[i * 4 + j] && i != cat.Length /4 -1) continue;
                     else flag = true;
                 }
                 if (flag)

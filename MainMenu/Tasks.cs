@@ -30,6 +30,7 @@
 
 using Lesson_5_Lib;
 using System;
+using static ConsoleIO_Lib.ConsolIO;
 
 namespace Main
 {
@@ -41,12 +42,7 @@ namespace Main
         /// <summary>
         /// Сообщения для ввывода
         /// </summary>
-        string[] message;
-
-        /// <summary>
-        /// Нажатая клавиша
-        /// </summary>
-        ConsoleKeyInfo key;
+        readonly string[] message;
 
         /// <summary>
         /// Конструктор
@@ -63,20 +59,25 @@ namespace Main
         /// </summary>
         public void Task1()
         {
+            int numb;
+            bool result;
+
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Greeting(this.message[0]);
+            Console.WriteLine("Для выхода нажмите \"Esc\"");
+            Console.ResetColor();
+            Console.WriteLine($"\nВведите целое число в диапазоне от {int.MinValue} до {int.MaxValue}");
             do
             {
-                ConsoleIO_Lib.ConsolIO.Greeting(this.message[1]);
-                int dec = ConsoleIO_Lib.ConsolIO.GetNumber($"\nВведите целое число в диапазоне от {int.MinValue} до {int.MaxValue}\n");
-                Binary bin = Dec2BinStek.Dec2Bin(dec);
-
-                Console.Clear();
-                Console.WriteLine($"Dec {dec}\nBin {bin}");
-
-                Console.WriteLine("\nДля выхода нажмите \"Esc\"");
-                Console.WriteLine("Нажмите любую клавишу...");
-                key = Console.ReadKey();
-            }
-            while (key.Key != ConsoleKey.Escape);
+                result = GetInt(out numb);
+                if (result)
+                {
+                    Binary bin = Dec2BinStek.Dec2Bin(numb);
+                    Console.SetCursorPosition(0, Console.CursorTop);
+                    Console.WriteLine($"Dec {numb}\nBin {bin}");
+                }
+                Console.SetCursorPosition(0, Console.CursorTop);
+            } while (!(result == false && numb == -2));
         }
 
         /// <summary>
@@ -84,10 +85,37 @@ namespace Main
         /// </summary>
         public void Task2()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(this.message[2]);
+            int numb;
+            bool exit;
+            bool result;
+            MyStack<int> stack;
+            do
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Greeting(this.message[1]);
+                
+                Console.WriteLine("Для выхода нажмите \"Esc\"");
+                Console.ResetColor();
 
-            Console.WriteLine("Нажмите любую клавишу...");
-            Console.ReadKey();
+                exit = GetInt(out numb, "\nВведите размер стека: ");
+                if (exit && numb > 0)
+                {
+                    stack = new MyStack<int>(numb);
+                    Console.WriteLine("\nПоочередно вводите целые числа для помещения в стек\nДля вывода содержимого стека нажмите \"Enter\"\nДля выхода нажмите \"Esc\"");
+                    do
+                    {
+                        result = false;
+                        try
+                        {
+                            exit = GetInt(out numb, "\nВведите очередное число число: ");
+                            if (exit) { Console.WriteLine($"\t{result = stack.Push(numb)}"); }
+                            else if (numb == 0) { Console.WriteLine(stack.ToString()); result = true; }
+                        }
+                        catch (StackOverflowException ex) { Console.WriteLine($"\nОшибка!\n{ex.Message}"); }
+                    } while (result);
+                }
+            } while (!(exit == false && numb == -2));
         }
 
         /// <summary>
@@ -95,7 +123,7 @@ namespace Main
         /// </summary>
         public void Task3()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(this.message[3]);
+            ConsoleIO_Lib.ConsolIO.Greeting(this.message[2]);
 
             Console.WriteLine("Нажмите любую клавишу...");
             Console.ReadKey();
@@ -106,7 +134,7 @@ namespace Main
         /// </summary>
         public void Task4()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(this.message[4]);
+            ConsoleIO_Lib.ConsolIO.Greeting(this.message[3]);
 
             Console.WriteLine("Нажмите любую клавишу...");
             Console.ReadKey();
@@ -117,7 +145,7 @@ namespace Main
         /// </summary>
         public void Task5()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(this.message[5]);
+            ConsoleIO_Lib.ConsolIO.Greeting(this.message[4]);
 
             Console.WriteLine("Нажмите любую клавишу...");
             Console.ReadKey();
@@ -128,7 +156,7 @@ namespace Main
         /// </summary>
         public void Task6()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(this.message[6]);
+            ConsoleIO_Lib.ConsolIO.Greeting(this.message[5]);
 
             Console.WriteLine("Нажмите любую клавишу...");
             Console.ReadKey();
@@ -139,7 +167,7 @@ namespace Main
         /// </summary>
         public void Task7()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(this.message[7]);
+            ConsoleIO_Lib.ConsolIO.Greeting(this.message[6]);
 
             Console.WriteLine("Нажмите любую клавишу...");
             Console.ReadKey();

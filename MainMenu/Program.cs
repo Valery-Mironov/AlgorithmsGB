@@ -37,7 +37,6 @@ namespace MainMenu
     {
         public static string[] tasksMsg = new string[]
                 {
-                    "Антон Алиев. Домашнее задание №5",
                     "Задание 1\nРеализовать перевод из десятичной в двоичную систему счисления с использованием стека.",
                     "Задание 2\nДобавить в программу «Реализация стека на основе односвязного списка» проверку на выделение памяти.\n" +
                         "Если память не выделяется, то должно выводиться соответствующее сообщение. Постарайтесь создать ситуацию,\n" +
@@ -46,53 +45,59 @@ namespace MainMenu
                         "Примеры правильных скобочных выражений – (), ([])(), {}(), ([{}]), неправильных – )(, ())({), (, ])}), ([(]),\n" +
                         "для скобок – [, (, {. Например: (2+(2*2)) или [2/{5*(4+7)}]",
                     "Задание 4\nСоздать функцию, копирующую односвязный список (то есть создающую в памяти копию односвязного списка без удаления первого списка).",
-                    "Задание 5\nРеализовать алгоритм перевода из инфиксной записи арифметического выражения в постфиксную",
+                    "Задание 5\nРеализовать алгоритм перевода из инфиксной записи арифметического выражения в постфиксную.",
                     "Задание 6\nРеализовать очередь: a) С использованием массива. b*) С использованием односвязного списка.",
                     "Задание 7*\nРеализовать двустороннюю очередь."
                 };
+        static string title = "Антон Алиев. Домашнее задание №5";
         public static Tasks tasks = new Tasks(tasksMsg);
 
         static void Main(string[] args)
         {
-            Console.Title = tasksMsg[0];
-            Console.WindowWidth = 130;
-            Console.WindowHeight = 45;
+            Console.Title = title;
+            Console.WindowWidth = 140;
+            Console.WindowHeight = 40;
             int numb;
+            bool result;
             do
             {
 				Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGray;
 				foreach(string msg in tasksMsg) Console.WriteLine(msg + "\n");
-                Console.WriteLine($"Для демонстрации решения задачи - ввдете номер задачи и нажмите \"Enter\"\nДля выхода введите - 0\n");
+                Console.WriteLine($"\nДля выхода нажмите \"Esc\"\nДля демонстрации решения задачи - ввдете номер задачи и нажмите \"Enter\"");
+                Console.ResetColor();
 
-                numb = ConsoleIO_Lib.ConsolIO.GetNumber();
-				switch (numb)
+                result = ConsoleIO_Lib.ConsolIO.GetInt(out numb);
+                if(result)
                 {
-                    case 0: break;
-                    case 1:
-                        tasks.Task1();
-                        break;
-                    case 2:
-                        tasks.Task2();
-                        break;
-                    case 3:
-                        tasks.Task3();
-                        break;
-                    case 4:
-                        tasks.Task4();
-                        break;
-                    case 5:
-                        tasks.Task5();
-                        break;
-                    case 6:
-                        tasks.Task6();
-                        break;
-                    case 7:
-                        tasks.Task7();
-                        break;
-                    default: { Console.WriteLine($"В решении нет задачи с номером {numb}..."); Console.ReadKey(); continue; }
+                    switch (numb)
+                    {
+                        case 1:
+                            tasks.Task1();
+                            break;
+                        case 2:
+                            tasks.Task2();
+                            break;
+                        case 3:
+                            tasks.Task3();
+                            break;
+                        case 4:
+                            tasks.Task4();
+                            break;
+                        case 5:
+                            tasks.Task5();
+                            break;
+                        case 6:
+                            tasks.Task6();
+                            break;
+                        case 7:
+                            tasks.Task7();
+                            break;
+                        default: { result = false; continue; }
+                    }
                 }
             }
-            while (numb !=0);
+            while (!(result == false && numb == -2));
         }
     }
 }

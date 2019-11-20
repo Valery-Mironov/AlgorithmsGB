@@ -15,19 +15,57 @@ namespace ConsoleIO_Lib
         /// </summary>
         /// <param name="msg"></param>
         /// <returns></returns>
-        public static int GetNumber(string msg1 = "", string msg2 = "")
+        public static bool GetInt(out int nmbr, string msg1 = "", string msg2 = "")
         {
-            string str;
-            int result;
+            string str = string.Empty;
+            nmbr = default;
             bool isCorrect = false;
+            bool result = false;
+            ConsoleKeyInfo key;
             do
             {
                 Console.WriteLine(msg1, msg2);
-                str = Console.ReadLine();
-                isCorrect = int.TryParse(str, out result);
-                if (!isCorrect)
+                do
                 {
-                    Console.WriteLine($"Ошибка ввода!\n{str} - не соответствует условию...\n Повторите ввод:");
+                    key = Console.ReadKey(true);
+                    if (key.Key >= ConsoleKey.D0 && key.Key <= ConsoleKey.D9 || key.Key == ConsoleKey.OemMinus || key.Key == ConsoleKey.Backspace)
+                    {
+                        if (key.Key == ConsoleKey.Backspace && str.Length !=0)
+                        {
+                            str = str.Remove(str.Length - 1);
+                            Console.MoveBufferArea(0, Console.CursorTop, Console.BufferWidth, 1, Console.BufferWidth, Console.CursorTop, ' ', Console.ForegroundColor, Console.BackgroundColor);
+                            Console.SetCursorPosition(0, Console.CursorTop);
+                            Console.Write(str);
+                        }
+                        else
+                        {
+                            str += key.KeyChar;
+                            Console.SetCursorPosition(0, Console.CursorTop);
+                            Console.Write(str);
+                        }
+                    }
+                }
+                while (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape);
+
+                switch (key.Key)
+                {
+                    case ConsoleKey.Escape:
+                        nmbr = -2;
+                        isCorrect = true;
+                        break;
+                    case ConsoleKey.Enter:
+                        if (str != string.Empty)
+                        {
+                            isCorrect = int.TryParse(str, out nmbr);
+                            if (!isCorrect)
+                            {
+                                Console.WriteLine($"\nОшибка ввода!\n\"{str}\" - не соответствует условию...\nПовторите ввод:");
+                                str = string.Empty;
+                            }
+                            result = true;
+                        }
+                        else isCorrect = true;
+                        break;
                 }
             }
             while (!isCorrect);
