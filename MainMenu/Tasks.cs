@@ -123,10 +123,24 @@ namespace Main
         /// </summary>
         public void Task3()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(this.message[2]);
-
-            Console.WriteLine("Нажмите любую клавишу...");
-            Console.ReadKey();
+            string str;
+            bool exit;
+            
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Greeting(this.message[2]);
+            Console.WriteLine("Для выхода нажмите \"Esc\"\n");
+            Console.ResetColor();
+            do
+            {
+                Console.Write("Введите строку...");
+                exit = GetString(out str);
+                if (!exit)
+                {
+                    if (Brace.IsCorrect(str)) { Console.WriteLine($"\nВ строке \"{str}\" все скобки расставлены верно.\n"); }
+                    else { Console.WriteLine($"\nВ строке \"{str}\" скобки расставлены не верно.\n"); }
+                }
+            } while (!exit);
         }
 
         /// <summary>

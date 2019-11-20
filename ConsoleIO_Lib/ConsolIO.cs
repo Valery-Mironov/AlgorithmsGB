@@ -11,7 +11,7 @@ namespace ConsoleIO_Lib
     public static class ConsolIO
     {
         /// <summary>
-        /// Циклично запрашивает из консоли целое число
+        /// Циклично запрашивает из консоли целое число. Определяет нажатие клавишь Esc и Enter
         /// </summary>
         /// <param name="msg"></param>
         /// <returns></returns>
@@ -70,6 +70,43 @@ namespace ConsoleIO_Lib
             }
             while (!isCorrect);
             return result;
+        }
+
+        /// <summary>
+        /// Циклично запрашивает из консоли строку. Определяет нажатие клавишь Esc и Enter
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public static bool GetString(out string str, string msg1 = "", string msg2 = "")
+        {
+            str = string.Empty;
+            bool isEmpty = false;
+            ConsoleKeyInfo key;
+            
+            Console.WriteLine(msg1, msg2);
+            do
+            {
+                key = Console.ReadKey(true);
+
+                if (key.Key == ConsoleKey.Backspace && str.Length >0)
+                {
+                    str = str.Remove(str.Length - 1);
+                    Console.MoveBufferArea(0, Console.CursorTop, Console.BufferWidth, 1, Console.BufferWidth, Console.CursorTop, ' ', Console.ForegroundColor, Console.BackgroundColor);
+                    Console.SetCursorPosition(0, Console.CursorTop);
+                    Console.Write(str);
+                }
+                if (!char.IsControl(key.KeyChar))
+                {
+                    str += key.KeyChar;
+                    isEmpty = true;
+                }
+                
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write(str);
+            }
+            while (key.Key != ConsoleKey.Escape ^ (key.Key == ConsoleKey.Enter && isEmpty));
+           
+            return key.Key == ConsoleKey.Escape;
         }
 
         /// <summary>
