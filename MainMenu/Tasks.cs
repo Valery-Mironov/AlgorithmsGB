@@ -30,6 +30,7 @@
 
 using Lesson_5_Lib;
 using System;
+using System.Security.Cryptography.X509Certificates;
 using static ConsoleIO_Lib.ConsolIO;
 
 namespace Main
@@ -148,9 +149,34 @@ namespace Main
         /// </summary>
         public void Task4()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(this.message[3]);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Greeting(this.message[3]);
+            Console.ResetColor();
 
-            Console.WriteLine("Нажмите любую клавишу...");
+            MyLinkList<string> MyList = new MyLinkList<string>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                MyList.Add($"Элемент {i+1}");
+            }
+
+            MyLinkList<string> CopyOfMyList = MyList.Copy();
+
+
+            Console.WriteLine($"\nВсего в односвязном списке \"{nameof(MyList)}\" содержится {MyList.Count} элементов:");
+            foreach (var item in MyList)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine($"\nВсего в односвязном списке \"{nameof(CopyOfMyList)}\" содержится {CopyOfMyList.Count} элементов:");
+            foreach (var item in CopyOfMyList)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("\nДля выхода нажмите любую клавишу...");
             Console.ReadKey();
         }
 
