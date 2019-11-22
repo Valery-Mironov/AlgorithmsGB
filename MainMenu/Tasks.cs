@@ -30,7 +30,6 @@
 
 using Lesson_5_Lib;
 using System;
-using System.Security.Cryptography.X509Certificates;
 using static ConsoleIO_Lib.ConsolIO;
 
 namespace Main
@@ -113,7 +112,7 @@ namespace Main
                             if (exit) { Console.WriteLine($"\t{result = stack.Push(numb)}"); }
                             else if (numb == 0) { Console.WriteLine(stack.ToString()); result = true; }
                         }
-                        catch (StackOverflowException ex) { Console.WriteLine($"\nОшибка!\n{ex.Message}"); }
+                        catch (StackOverflowException ex) { Console.WriteLine($"\nОшибка!\n{ex.Message}"); Console.ReadKey(); }
                     } while (result);
                 }
             } while (!(exit == false && numb == -2));
@@ -185,10 +184,25 @@ namespace Main
         /// </summary>
         public void Task5()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(this.message[4]);
+            string str;
+            bool exit;
 
-            Console.WriteLine("Нажмите любую клавишу...");
-            Console.ReadKey();
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Greeting(this.message[4]);
+            Console.WriteLine("Для выхода нажмите \"Esc\"\n");
+            Console.ResetColor();
+            PostfixNotation converter = new PostfixNotation();
+            do
+            {
+                Console.Write("Введите инфиксное выражение: ");
+                exit = GetString(out str);
+                if (!exit)
+                {
+                    if (Brace.IsCorrect(str)) { Console.WriteLine($"\n{converter.ConvertToPostFix(str)}\n"); }
+                    else { Console.WriteLine($"\nВ строке \"{str}\" скобки расставлены не верно.\n"); }
+                }
+            } while (!exit);
         }
 
         /// <summary>
