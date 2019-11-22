@@ -153,18 +153,17 @@ namespace Main
             Greeting(this.message[3]);
             Console.ResetColor();
 
-            MyLinkList<string> MyList = new MyLinkList<string>();
+            MyLinkList<string> myList = new MyLinkList<string>();
 
             for (int i = 0; i < 10; i++)
             {
-                MyList.Add($"Элемент {i+1}");
+                myList.Add($"Элемент {i+1}");
             }
 
-            MyLinkList<string> CopyOfMyList = MyList.Copy();
+            MyLinkList<string> CopyOfMyList = myList.Copy();
 
-
-            Console.WriteLine($"\nВсего в односвязном списке \"{nameof(MyList)}\" содержится {MyList.Count} элементов:");
-            foreach (var item in MyList)
+            Console.WriteLine($"\nВсего в односвязном списке \"{nameof(myList)}\" содержится {myList.Count} элементов:");
+            foreach (var item in myList)
             {
                 Console.WriteLine(item);
             }
@@ -234,7 +233,7 @@ namespace Main
                     if (exit)
                     {
                         result = queue.Enqueue(numb);
-                        if (result) Console.WriteLine("\tРазмер кучи был увеличен!");
+                        if (result) Console.WriteLine("\tРазмер очереди был увеличен!");
                     }
                     else if (numb == 0) { Console.WriteLine(queue.ToString()); }
 
@@ -248,10 +247,51 @@ namespace Main
         /// </summary>
         public void Task7()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(this.message[6]);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Greeting(this.message[3]);
+            Console.WriteLine("Демонстрация работы двусвязного списка.\nДля выхода - нажмите \"Esc\"\nДля перехода к следующему шагу - нажмите любую клавишу...");
+            Console.ResetColor();
 
-            Console.WriteLine("Нажмите любую клавишу...");
-            Console.ReadKey();
+            MyDeq<string> deq = new MyDeq<string>();
+
+            Console.WriteLine("\nДобавляем строки в конец двусвязного списка от 0 до 3\nНажмите любую клавишу...");
+            if (Console.ReadKey(true).Key == ConsoleKey.Escape) return;
+            for (int i = 0; i < 4; i++)
+            {
+                deq.Add($"Элемент {i}");
+            }
+            PrintResult();
+
+            Console.WriteLine("Добавляем строки в начало двусвязного списка от -1 до -3\nНажмите любую клавишу...");
+            if (Console.ReadKey(true).Key == ConsoleKey.Escape) return;
+            for (int i = -1; i > -4; i--)
+            {
+                deq.AppendFirst($"Элемент {i}");
+            }
+            PrintResult();
+
+            Console.WriteLine($"Извлечение первой строки:\t\"{deq.Dequeue()}\"\nНажмите любую клавишу...");
+            if (Console.ReadKey(true).Key == ConsoleKey.Escape) return;
+            PrintResult();
+
+            Console.WriteLine($"Извлечение последней строки:\t\"{deq.Pop()}\"\nНажмите любую клавишу...");
+            if (Console.ReadKey(true).Key == ConsoleKey.Escape) return;
+            PrintResult();
+
+            ///выводит в консоль содержимое списка
+            bool PrintResult()
+            {
+                Console.WriteLine("\nСодержимое списка после операции:");
+                Console.WriteLine($"Всего в односвязном списке \"{nameof(deq)}\" содержится {deq.Count} элементов:");
+                foreach (var item in deq)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine("Нажмите любую клавишу...\n");
+                if (Console.ReadKey(true).Key == ConsoleKey.Escape) return true;
+                return false;
+            }
         }
     }
 }

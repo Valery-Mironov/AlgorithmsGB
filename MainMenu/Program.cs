@@ -31,7 +31,6 @@
 using Main;
 using System;
 
-
 namespace MainMenu
 {
     public static class Program
@@ -65,7 +64,7 @@ namespace MainMenu
 				Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkGray;
 				foreach(string msg in tasksMsg) Console.WriteLine(msg + "\n");
-                Console.WriteLine($"\nДля выхода нажмите \"Esc\"\nДля демонстрации решения задачи - ввдете номер задачи и нажмите \"Enter\"");
+                Console.WriteLine($"Для выхода нажмите \"Esc\"\nДля демонстрации решения задачи - ввдете номер задачи и нажмите \"Enter\"");
                 Console.ResetColor();
 
                 result = ConsoleIO_Lib.ConsolIO.GetInt(out numb);

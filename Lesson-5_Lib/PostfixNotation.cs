@@ -5,8 +5,7 @@
  * Реализовать алгоритм перевода из инфиксной записи арифметического выражения в постфиксную.
  * 
  */
-
-
+ 
 using System.Collections.Generic;
 
 namespace Lesson_5_Lib

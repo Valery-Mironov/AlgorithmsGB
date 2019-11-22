@@ -10,6 +10,10 @@
 
 namespace Lesson_5_Lib
 {
+    /// <summary>
+    /// Стек
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class MyStack<T>
     {
         /// <summary>
@@ -21,11 +25,6 @@ namespace Lesson_5_Lib
         /// Указатель на текущий индекс
         /// </summary>
         private int header;
-
-        ///// <summary>
-        ///// Указатель на индекс хвоста
-        ///// </summary>
-        //int tail;
 
         /// <summary>
         /// Флаг пустого стека
@@ -124,5 +123,4 @@ namespace Lesson_5_Lib
             return result;
         }
     }
-        
 }

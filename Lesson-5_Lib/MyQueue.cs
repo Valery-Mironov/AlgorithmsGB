@@ -1,8 +1,20 @@
-﻿using System;
+﻿/* Антон Алиев
+ * Алгоритмы, домашнее задание к уроку 5. 
+ * 
+ * Задание 6
+ * Реализовать очередь: a) С использованием массива. b*) С использованием односвязного списка.
+ * 
+ */
+
+using System;
 using System.Collections.Generic;
 
 namespace Lesson_5_Lib
 {
+    /// <summary>
+    /// Очередь
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class MyQueue<T>
     {
         /// <summary>
