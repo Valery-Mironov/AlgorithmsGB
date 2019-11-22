@@ -210,10 +210,37 @@ namespace Main
         /// </summary>
         public void Task6()
         {
-            ConsoleIO_Lib.ConsolIO.Greeting(this.message[5]);
+            int numb;
+            bool exit;
+            bool cansel;
+            bool result;
+            MyQueue<int> queue;
+            do
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Greeting(this.message[5]);
 
-            Console.WriteLine("Нажмите любую клавишу...");
-            Console.ReadKey();
+                Console.WriteLine("Для выхода нажмите \"Esc\"");
+                Console.ResetColor();
+
+                cansel = GetInt(out numb, "\nВведите первичный размер очереди, или нажмите \"Enter\": ");
+                if (cansel) queue = new MyQueue<int>();
+                else queue = new MyQueue<int>(numb);
+                Console.WriteLine("\nПоочередно вводите целые числа для помещения в очередь\nДля вывода содержимого очереди нажмите \"Enter\"\nДля выхода нажмите \"Esc\"");
+                do
+                {
+                    exit = GetInt(out numb, "\nВведите очередное число число: ");
+                    if (exit)
+                    {
+                        result = queue.Enqueue(numb);
+                        if (result) Console.WriteLine("\tРазмер кучи был увеличен!");
+                    }
+                    else if (numb == 0) { Console.WriteLine(queue.ToString()); }
+
+                } while (!(exit == false && numb == -2));
+
+            } while (!(exit == false && numb == -2));
         }
 
         /// <summary>

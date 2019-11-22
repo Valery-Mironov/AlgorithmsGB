@@ -45,6 +45,7 @@
     <Compile Include="Binary.cs" />
     <Compile Include="Brace.cs" />
     <Compile Include="Dec2BinStek.cs" />
+    <Compile Include="MyQueue.cs" />
     <Compile Include="MyStack.cs" />
     <Compile Include="PostfixNotation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
